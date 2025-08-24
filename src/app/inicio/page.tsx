@@ -1,0 +1,333 @@
+import { PublicLayout } from "@/components/layout/PublicLayout";
+import Link from "next/link";
+import { TratamientoCard } from "@/components/TratamientoCard";
+
+export default function InicioPage() {
+  return (
+    <PublicLayout>
+      {/* Mobile Hero Section */}
+      <div className="bg-[url('/hero-bg-mobile.png')] md:bg-[url('/hero-bg.png')] bg-cover bg-center h-[378px] md:h-[500px] lg:h-[600px] xl:h-screen">
+        <div className="bg-gradient-to-b from-black/50 to-neutral-300/50 h-full flex flex-col px-4">
+          <div className="text-center pt-[98px] flex-1 flex flex-col justify-between">
+            <div>
+              <h1 className="text-white text-[25px] font-hero font-semibold leading-tight">
+                Cirugía Plástica y <br />
+                Medicina estética
+              </h1>
+            </div>
+            <div className="pb-[30px]">
+              <div className="flex flex-row space-x-4 items-center justify-center">
+                <Link
+                  href="/contacto"
+                  className="bg-black text-white px-6 py-3 rounded-lg text-sm font-medium"
+                >
+                  Reservá tu turno
+                </Link>
+                <Link
+                  href="/tratamientos"
+                  className="border border-white text-white px-6 py-3 rounded-lg text-sm font-medium"
+                >
+                  Ver Tratamientos
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Only Text Section */}
+      <div className="md:hidden h-[152px] bg-main-bg flex items-center justify-center px-4">
+        <div className="text-center max-w-sm text-justify">
+          <p className="text-black font-main text-[12px] leading-[13px]">
+            <span className="font-thin">Somos más que una clínica: </span>
+            <span className="font-semibold">
+              somos una cultura
+              <br />
+              de cuidado.
+            </span>
+          </p>
+          <p className="text-black font-main text-[12px] leading-[13px]">
+            <span className="font-thin">Creemos en una </span>
+            <span className="font-semibold">
+              estética ética, basada en la ciencia,
+              <br />
+              el respeto y la escucha real.
+            </span>
+          </p>
+          <p className="text-black font-main text-[12px] leading-[13px] font-light">
+            Acompañamos a cada paciente con tratamientos
+            <br />
+            personalizados y atención humana, para que vuelvas a
+            <br />
+            habitar tu cuerpo con confianza y libertad.
+          </p>
+        </div>
+      </div>
+
+      {/* Divider Line */}
+      <div className="md:hidden flex justify-center">
+        <div className="w-[288px] h-[1px] bg-black"></div>
+      </div>
+
+      {/* Mobile Only Section - Habitar el Cuerpo */}
+      <div className="md:hidden bg-main-bg">
+        {/* Title Section */}
+        <div className="h-[54px] flex items-center justify-center">
+          <h2
+            className="text-black font-main font-regular text-lg uppercase"
+            style={{ letterSpacing: "5px" }}
+          >
+            HABITAR EL CUERPO
+          </h2>
+        </div>
+
+        {/* Subtitle Text Section */}
+        <div className="flex items-center justify-center px-4">
+          <p
+            className="text-black font-serif font-bold italic text-[18px] text-center"
+            style={{ lineHeight: "22px" }}
+          >
+            Tu bienestar y confianza
+            <br />
+            son nuestra prioridad
+          </p>
+        </div>
+
+        {/* Personal Photo Container */}
+        <div className="flex justify-center px-4 mt-8">
+          <div
+            className="h-[109px] w-full max-w-sm rounded-lg"
+            style={{
+              backgroundImage: "url('/personal-photo.png')",
+              backgroundSize: "100%",
+              backgroundPosition: "center -43px",
+              backgroundRepeat: "no-repeat"
+            }}
+          ></div>
+        </div>
+        {/* Doctor Information */}
+        <div className="flex justify-center px-4" style={{ marginTop: "9px" }}>
+          <div className="rounded-lg bg-stone-200 px-2.5 pt-8 pb-5 text-xs w-full max-w-sm">
+            <p className="font-light leading-none">
+              Soy médico cirujano, especializado en cirugía plástica estética y
+              reconstructiva. Me formé en la Universidad Nacional de Córdoba y
+              realicé mi residencia en cirugía general y cirugía plástica en el
+              Hospital Cosme Argerich, en Buenos Aires.{" "}
+            </p>
+            <p className="mt-6 font-extrabold leading-loose">
+              Dr. German Miranda Marini{" "}
+            </p>
+            <p className="mt-px text-neutral-600 leading-relaxed">
+              Director Médico de Santë
+            </p>
+          </div>
+        </div>
+
+        {/* Four Paragraphs in Two Columns */}
+        <div className="flex justify-center px-4 mt-8">
+          <div className="w-full max-w-sm grid grid-cols-2 gap-4">
+            {/* Left Column */}
+            <div className="space-y-4">
+              <p
+                className="font-main font-light text-[12px] text-left"
+                style={{ lineHeight: "13px" }}
+              >
+                Desde entonces, nunca dejé de formarme. Creo en la actualización
+                constante como parte esencial del compromiso médico, porque
+                estoy convencido de que la excelencia se sostiene en el
+                aprendizaje continuo.
+              </p>
+              <p
+                className="font-main font-light text-[12px] text-left"
+                style={{ lineHeight: "13px" }}
+              >
+                Hace más de 12 años decidí fundar Santë con una idea clara: que
+                la medicina estética podía ser ética, cercana y profundamente
+                respetuosa. Desde entonces, mi compromiso no ha sido solo con
+                los resultados, sino con las personas que los buscan.
+              </p>
+            </div>
+
+            {/* Right Column */}
+            <div className="space-y-4">
+              <p
+                className="font-main font-light text-[12px] text-left"
+                style={{ lineHeight: "13px" }}
+              >
+                Creo que cada paciente merece ser escuchado antes que
+                intervenido. Por eso, mi trabajo comienza mucho antes del
+                procedimiento: en la mirada, en el diálogo, en la confianza. No
+                creo en las fórmulas ni en los moldes. Creo en acompañar
+                procesos reales, que respeten la identidad de cada quien y
+                prioricen siempre el bienestar.
+              </p>
+              <p
+                className="font-main font-light text-[12px] text-left"
+                style={{ lineHeight: "13px" }}
+              >
+                Ejercer la medicina es, para mí, una responsabilidad y una
+                vocación. Y Santë, el espacio donde esa visión se vuelve
+                práctica, todos los días.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Tratamientos Title */}
+        <div className="flex justify-center px-4 mt-8">
+          <div className="w-[292px] h-[72px] flex items-center justify-center">
+            <h3 className="font-serif font-bold text-[18px] text-center">
+              Tratamientos
+            </h3>
+          </div>
+        </div>
+
+        {/* Subtitle with Mixed Weights */}
+        <div className="flex justify-center px-4">
+          <div className="w-full max-w-sm">
+            <p className="text-center" style={{ lineHeight: "13px" }}>
+              <span className="font-main font-thin text-[12px]">
+                Cada tratamiento es pensado como parte de una
+                <br />
+              </span>
+              <span className="font-main font-semibold text-[12px]">
+                experiencia integral
+              </span>
+              <span className="font-main font-thin text-[12px]">
+                , guiada por{" "}
+              </span>
+              <span className="font-main font-semibold text-[12px]">
+                la <br /> ciencia, la sensibilidad y el respeto
+              </span>
+              <span className="font-main font-thin text-[12px]">
+                {" "}
+                por la <br /> identidad de cada paciente.
+              </span>
+            </p>
+          </div>
+        </div>
+
+        {/* Tratamiento Cards */}
+        <div className="flex flex-col space-y-4 px-4 mt-8">
+          <TratamientoCard
+            title="Cirugía"
+            subtitle="Plástica"
+            description="Acompañamos cada cirugía plástica con profesionalismo y un enfoque personalizado para lograr resultados naturales."
+          />
+          <TratamientoCard
+            title="Estética"
+            subtitle="Médica"
+            description="La estética médica es un cuidado preciso y consciente que realza la belleza natural sin alterar la esencia."
+          />
+          <TratamientoCard
+            title="Mini"
+            subtitle="Invasivos"
+            description="Tratamientos no invasivos, seguros y personalizados para lograr resultados naturales y efectivos."
+          />
+        </div>
+      </div>
+
+      {/* Por qué elegirnos Section */}
+      <div
+        className="md:hidden bg-secondary-bg pb-8 pt-10"
+        style={{ marginTop: "16px" }}
+      >
+        <div className="flex flex-col items-center space-y-6">
+          <h3 className="font-hero font-bold text-[18px] text-black text-center mb-0">
+            ¿Por qué elegirnos?
+          </h3>
+          <div className="flex justify-center px-5 w-full max-w-sm">
+            <div
+              className="w-full h-64 bg-center bg-no-repeat bg-contain"
+              style={{
+                backgroundImage: "url('/por-que-elegirnos.png')"
+              }}
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      {/* Contacto Section */}
+      <div className="md:hidden bg-tertiary-bg py-8">
+        <div className="px-4 space-y-6">
+          {/* Title */}
+          <h3 className="font-serif font-bold text-[18px] text-white text-center">
+            Contacto
+          </h3>
+
+          {/* Subtitle */}
+          <div className="text-center space-y-2">
+            <p
+              className="font-main font-medium text-[12px] text-white"
+              style={{ lineHeight: "13px" }}
+            >
+              ¿Te gustaría saber qué es lo mejor para vos?
+            </p>
+            <p
+              className="font-main font-medium text-[12px] text-white"
+              style={{ lineHeight: "13px" }}
+            >
+              Escribinos
+            </p>
+          </div>
+
+          {/* Form */}
+          <form className="space-y-4">
+            <div>
+              <input
+                type="text"
+                placeholder="Nombre"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-[#A4A2A2]"
+              />
+            </div>
+            <div>
+              <input
+                type="email"
+                placeholder="Email"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-[#A4A2A2]"
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="Localidad"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-[#A4A2A2]"
+              />
+            </div>
+
+            {/* Buttons */}
+            <div className="flex space-x-4 pt-4">
+              <button
+                type="submit"
+                className="flex-1 bg-black text-white px-6 py-3 rounded-lg font-main font-medium flex items-center justify-center space-x-2"
+              >
+                <span>Enviar</span>
+                <svg
+                  className="w-4 h-4"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                className="flex-1 bg-black text-white px-6 py-3 rounded-lg font-main font-medium flex items-center justify-center space-x-2"
+              >
+                <span>WhatsApp</span>
+                <svg
+                  className="w-4 h-4"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </PublicLayout>
+  );
+}
