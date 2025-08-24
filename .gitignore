@@ -39,3 +39,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# API related files and components
+/src/lib/api/
+/src/hooks/api/
+/src/components/appointments/
+/src/components/doctors/
+/src/components/dashboard/
+/src/components/examples/
+/src/app/admin/
+/src/types/api.ts
+API_USAGE.md
+/src/app/admin/
