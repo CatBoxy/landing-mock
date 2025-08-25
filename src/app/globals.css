@@ -189,6 +189,22 @@
 }
 
 @font-face {
+  font-family: "SF Pro Display";
+  src: url("/fonts/SF Pro/SF-Pro-Display-Heavy.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("/fonts/SF Pro/SF-Pro-Display-HeavyItalic.otf") format("opentype");
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "SF Pro Text";
   src: url("/fonts/SF Pro/SF-Pro-Text-Ultralight.otf") format("opentype");
   font-weight: 100;

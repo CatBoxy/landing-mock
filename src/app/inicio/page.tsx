@@ -1,6 +1,7 @@
 import { PublicLayout } from "@/components/layout/PublicLayout";
 import Link from "next/link";
 import { TratamientoCard } from "@/components/TratamientoCard";
+import { BlogArticleCard } from "@/components/BlogArticleCard";
 
 export default function InicioPage() {
   return (
@@ -247,6 +248,84 @@ export default function InicioPage() {
         </div>
       </div>
 
+      {/* Actualidad Section */}
+      <div className="md:hidden bg-white py-8">
+        <div className="flex flex-col items-center space-y-6">
+          <h3 className="font-hero font-bold text-[18px] text-black text-center mb-0">
+            Actualidad
+          </h3>
+          <div className="flex justify-center px-5 w-full max-w-sm">
+            <div className="text-center space-y-4">
+              <p className="font-main font-light text-[12px] text-black leading-[13px]">
+                Entendemos que cada persona es{" "}
+                <span className="font-main font-medium text-[12px] text-black leading-[13px]">
+                  única
+                </span>
+                , y por
+                <br />
+                eso, ofrecemos un enfoque personalizado que se adapta a{" "}
+                <span className="font-main font-medium text-[12px] text-black leading-[13px]">
+                  tus sueños y expectativas
+                </span>
+                .
+              </p>
+            </div>
+          </div>
+
+          {/* Blog Article Cards Grid */}
+          <div className="grid grid-cols-2 gap-4 px-5 w-full max-w-sm mt-6">
+            <BlogArticleCard
+              imageSrc="/hero-bg.png"
+              imageAlt="Blog article 1"
+              title="Nuevas Tendencias"
+              subtitle="Innovaciones en medicina estética"
+              text="Descubre las últimas técnicas y tratamientos que están revolucionando el campo de la medicina estética."
+              author="Dr. German Miranda Marini"
+            />
+            <BlogArticleCard
+              imageSrc="/hero-bg.png"
+              imageAlt="Blog article 2"
+              title="Cuidado Post-Tratamiento"
+              subtitle="Guía completa de recuperación"
+              text="Consejos esenciales para optimizar los resultados y mantener la salud de tu piel después de cualquier procedimiento."
+              author="Dr. German Miranda Marini"
+            />
+            <BlogArticleCard
+              imageSrc="/hero-bg.png"
+              imageAlt="Blog article 3"
+              title="Bienestar Integral"
+              subtitle="Salud física y mental"
+              text="Cómo la medicina estética contribuye al bienestar general y la confianza personal de cada paciente."
+              author="Dr. German Miranda Marini"
+            />
+            <BlogArticleCard
+              imageSrc="/hero-bg.png"
+              imageAlt="Blog article 4"
+              title="Tecnología Avanzada"
+              subtitle="Equipamiento de última generación"
+              text="Nuestras instalaciones cuentan con la tecnología más avanzada para garantizar tratamientos seguros y efectivos."
+              author="Dr. German Miranda Marini"
+            />
+            <BlogArticleCard
+              imageSrc="/hero-bg.png"
+              imageAlt="Blog article 5"
+              title="Nutrición y Belleza"
+              subtitle="Alimentación para la piel"
+              text="La importancia de una dieta equilibrada en el mantenimiento de la salud y belleza de la piel."
+              author="Dr. German Miranda Marini"
+            />
+            <BlogArticleCard
+              imageSrc="/hero-bg.png"
+              imageAlt="Blog article 6"
+              title="Envejecimiento Saludable"
+              subtitle="Aceptación y cuidado"
+              text="Cómo envejecer de manera saludable manteniendo la autoestima y el bienestar personal."
+              author="Dr. German Miranda Marini"
+            />
+          </div>
+        </div>
+      </div>
+
       {/* Contacto Section */}
       <div className="md:hidden bg-tertiary-bg py-8">
         <div className="px-4 space-y-6">
@@ -258,16 +337,13 @@ export default function InicioPage() {
           {/* Subtitle */}
           <div className="text-center space-y-2">
             <p
-              className="font-main font-medium text-[12px] text-white"
+              className="font-main font-light text-[12px] text-white"
               style={{ lineHeight: "13px" }}
             >
-              ¿Te gustaría saber qué es lo mejor para vos?
-            </p>
-            <p
-              className="font-main font-medium text-[12px] text-white"
-              style={{ lineHeight: "13px" }}
-            >
-              Escribinos
+              ¿Te gustaría saber qué es lo <br /> mejor para vos?{" "}
+              <span className="font-main font-medium text-[12px] text-white">
+                Escribinos
+              </span>
             </p>
           </div>
 
@@ -277,21 +353,21 @@ export default function InicioPage() {
               <input
                 type="text"
                 placeholder="Nombre"
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-[#A4A2A2]"
+                className="w-full px-4 h-[30px] rounded-lg border !rounded-[6px] border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-[#A4A2A2]"
               />
             </div>
             <div>
               <input
                 type="email"
                 placeholder="Email"
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-[#A4A2A2]"
+                className="w-full px-4 h-[30px] rounded-lg border !rounded-[6px] border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-[#A4A2A2]"
               />
             </div>
             <div>
               <input
                 type="text"
                 placeholder="Localidad"
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-[#A4A2A2]"
+                className="w-full px-4 h-[30px] rounded-lg border !rounded-[6px] border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-[#A4A2A2]"
               />
             </div>
 
