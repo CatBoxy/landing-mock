@@ -1,29 +1,9 @@
 import { PublicLayout } from "@/components/layout/PublicLayout";
 import { ContactoSection } from "@/components/ContactoSection";
 import { DropdownContainer } from "@/components/DropdownContainer";
+import { treatments } from "@/lib/tratamientos";
 
 export default function TratamientosPage() {
-  const dropdownItems = [
-    {
-      id: "cirugia",
-      title: "Cirugía Plástica",
-      content:
-        "Ofrecemos procedimientos quirúrgicos de alta calidad para el rostro y cuerpo, incluyendo rinoplastia, blefaroplastia, lifting facial, liposucción y cirugía mamaria. Cada procedimiento es personalizado y realizado con técnicas avanzadas para lograr resultados naturales y duraderos."
-    },
-    {
-      id: "estetica",
-      title: "Medicina Estética",
-      content:
-        "Nuestros tratamientos no quirúrgicos incluyen toxina botulínica, rellenos dérmicos, hilos tensores, peelings químicos y tratamientos con láser. Utilizamos tecnología de vanguardia para rejuvenecimiento facial y corporal sin tiempo de recuperación."
-    },
-    {
-      id: "minimamente",
-      title: "Procedimientos Mínimamente Invasivos",
-      content:
-        "Tratamientos que ofrecen resultados visibles con mínima invasión: radiofrecuencia, ultrasonido focalizado, microneedling y tratamientos con plasma rico en plaquetas. Ideales para quienes buscan mejoras sin cirugía."
-    }
-  ];
-
   return (
     <PublicLayout>
       <div className="bg-main-bg pb-12">
@@ -50,7 +30,7 @@ export default function TratamientosPage() {
 
         {/* Dropdowns Section */}
         <div className="px-4 max-w-md mx-auto mt-8">
-          <DropdownContainer items={dropdownItems} />
+          <DropdownContainer treatments={treatments} />
         </div>
       </div>
       {/* Contacto Section */}

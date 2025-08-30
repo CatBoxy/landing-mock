@@ -6,7 +6,7 @@ interface TreatmentNode {
 
 export const treatments: TreatmentNode[] = [
   {
-    label: "Cirugia plastica",
+    label: "Cirugia Plastica",
     children: [
       {
         label: "Abdomen y Cuerpo",

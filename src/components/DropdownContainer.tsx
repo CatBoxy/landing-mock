@@ -2,38 +2,58 @@
 import React, { useState } from "react";
 import { Dropdown } from "./Dropdown";
 
-interface DropdownItem {
-  id: string;
-  title: string;
-  content: string;
+interface TreatmentNode {
+  label: string;
+  description?: string[];
+  children?: TreatmentNode[];
 }
 
 interface DropdownContainerProps {
-  items: DropdownItem[];
+  treatments: TreatmentNode[];
 }
 
-export function DropdownContainer({ items }: DropdownContainerProps) {
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+interface ActiveDropdowns {
+  [key: string]: boolean;
+}
+
+export function DropdownContainer({ treatments }: DropdownContainerProps) {
+  const [activeDropdowns, setActiveDropdowns] = useState<ActiveDropdowns>({});
 
   const handleToggle = (dropdownId: string) => {
-    if (activeDropdown === dropdownId) {
-      setActiveDropdown(null);
-    } else {
-      setActiveDropdown(dropdownId);
-    }
+    setActiveDropdowns((prev) => ({
+      ...prev,
+      [dropdownId]: !prev[dropdownId]
+    }));
+  };
+
+  const renderTreatmentNode = (
+    node: TreatmentNode,
+    level: number,
+    parentId?: string
+  ): React.ReactNode => {
+    const nodeId = parentId ? `${parentId}-${node.label}` : node.label;
+    const isActive = activeDropdowns[nodeId] || false;
+
+    return (
+      <Dropdown
+        key={nodeId}
+        title={node.label}
+        description={node.description}
+        level={level}
+        isActive={isActive}
+        onToggle={() => handleToggle(nodeId)}
+      >
+        {node.children &&
+          node.children.map((child) =>
+            renderTreatmentNode(child, level + 1, nodeId)
+          )}
+      </Dropdown>
+    );
   };
 
   return (
     <div className="space-y-2">
-      {items.map((item) => (
-        <Dropdown
-          key={item.id}
-          title={item.title}
-          content={item.content}
-          isActive={activeDropdown === item.id}
-          onToggle={() => handleToggle(item.id)}
-        />
-      ))}
+      {treatments.map((treatment) => renderTreatmentNode(treatment, 0))}
     </div>
   );
 }
