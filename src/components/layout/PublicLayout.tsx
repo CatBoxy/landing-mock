@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
 interface PublicLayoutProps {
@@ -13,141 +12,163 @@ export function PublicLayout({ children }: PublicLayoutProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navigation = [
-    { name: "Inicio", href: "/inicio" },
-    { name: "Tratamientos", href: "/tratamientos" },
-    { name: "Blog", href: "/blog" }
+    { name: "NOSOTROS", href: "/nosotros" },
+    { name: "TRATAMIENTOS", href: "/tratamientos" },
+    { name: "PORQUÉ ELEGIRNOS?", href: "/por-que-elegirnos" },
+    { name: "ACTUALIDAD", href: "/actualidad" },
+    { name: "CONTACTO", href: "/contacto" }
   ];
 
   return (
     <div className="min-h-screen bg-main-bg font-main font-weight-main">
       {/* Header */}
       <header className="bg-main-bg shadow-sm">
-        <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 justify-between items-center">
+        <nav className="relative">
+          {/* Desktop Header Content */}
+          <div className="hidden md:block relative h-[162px] flex items-center">
             {/* Logo */}
-            <div className="flex-shrink-0">
+            <div className="absolute left-[245px] flex items-center h-full">
               <Link href="/inicio" className="flex items-center">
-                <img src="/logo.png" alt="Logo" className="h-6 w-auto" />
+                <img
+                  src="/logo.png"
+                  alt="Logo"
+                  className="w-[136px] h-[44px]"
+                />
               </Link>
             </div>
 
             {/* Desktop navigation */}
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* Mobile menu button */}
-            <div className="md:hidden relative">
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-black p-1"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              >
-                <svg
-                  className="text-black"
-                  style={{ width: "29px", height: "22px" }}
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+            <div className="absolute right-[245px] flex items-center h-full space-x-8">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="font-sans transition-colors hover:text-gray-700"
+                  style={{
+                    fontSize: "15px",
+                    fontWeight: item.name === "CONTACTO" ? "900" : "400",
+                    letterSpacing: "3px"
+                  }}
                 >
-                  <line
-                    x1={mobileMenuOpen ? "18" : "3"}
-                    y1={mobileMenuOpen ? "6" : "6"}
-                    x2={mobileMenuOpen ? "6" : "21"}
-                    y2={mobileMenuOpen ? "18" : "6"}
-                  />
-                  <line
-                    x1={mobileMenuOpen ? "6" : "3"}
-                    y1={mobileMenuOpen ? "6" : "12"}
-                    x2={mobileMenuOpen ? "18" : "21"}
-                    y2={mobileMenuOpen ? "18" : "12"}
-                  />
-                  <line
-                    x1="3"
-                    y1="18"
-                    x2="21"
-                    y2="18"
-                    className={mobileMenuOpen ? "opacity-0" : "opacity-100"}
-                  />
-                </svg>
-                <span className="sr-only">
-                  {mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
-                </span>
-              </Button>
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          </div>
 
-              {/* Dropdown Menu */}
-              {mobileMenuOpen && (
-                <div className="absolute right-0 top-full mt-2 w-64 bg-[#F7EEEB] shadow-lg border border-gray-200 z-50">
-                  <div className="py-4">
-                    <Link
-                      href="/nosotros"
-                      className="block px-4 py-3 text-gray-900 hover:text-gray-700 hover:bg-dropdown-opened transition-colors"
-                      style={{ letterSpacing: "3px" }}
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      NOSOTROS
-                    </Link>
-                    <div className="flex justify-center mb-3">
-                      <div className="w-[226px] h-[1px] bg-gray-950"></div>
+          {/* Mobile Header */}
+          <div className="md:hidden mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="flex h-16 justify-between items-center">
+              {/* Logo */}
+              <div className="flex-shrink-0">
+                <Link href="/inicio" className="flex items-center">
+                  <img src="/logo.png" alt="Logo" className="h-6 w-auto" />
+                </Link>
+              </div>
+
+              {/* Mobile menu button */}
+              <div className="md:hidden relative">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-black p-1"
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                >
+                  <svg
+                    className="text-black"
+                    style={{ width: "29px", height: "22px" }}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <line
+                      x1={mobileMenuOpen ? "18" : "3"}
+                      y1={mobileMenuOpen ? "6" : "6"}
+                      x2={mobileMenuOpen ? "6" : "21"}
+                      y2={mobileMenuOpen ? "18" : "6"}
+                    />
+                    <line
+                      x1={mobileMenuOpen ? "6" : "3"}
+                      y1={mobileMenuOpen ? "6" : "12"}
+                      x2={mobileMenuOpen ? "18" : "21"}
+                      y2={mobileMenuOpen ? "18" : "12"}
+                    />
+                    <line
+                      x1="3"
+                      y1="18"
+                      x2="21"
+                      y2="18"
+                      className={mobileMenuOpen ? "opacity-0" : "opacity-100"}
+                    />
+                  </svg>
+                  <span className="sr-only">
+                    {mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+                  </span>
+                </Button>
+
+                {/* Dropdown Menu */}
+                {mobileMenuOpen && (
+                  <div className="absolute right-0 top-full mt-2 w-64 bg-[#F7EEEB] shadow-lg border border-gray-200 z-50">
+                    <div className="py-4">
+                      <Link
+                        href="/nosotros"
+                        className="block px-4 py-3 text-gray-900 hover:text-gray-700 hover:bg-dropdown-opened transition-colors"
+                        style={{ letterSpacing: "3px" }}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        NOSOTROS
+                      </Link>
+                      <div className="flex justify-center mb-3">
+                        <div className="w-[226px] h-[1px] bg-gray-950"></div>
+                      </div>
+                      <Link
+                        href="/tratamientos"
+                        className="block px-4 py-3 text-gray-900 hover:text-gray-700 hover:bg-dropdown-opened transition-colors"
+                        style={{ letterSpacing: "3px" }}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        TRATAMIENTOS
+                      </Link>
+                      <div className="flex justify-center mb-3">
+                        <div className="w-[226px] h-[1px] bg-gray-950"></div>
+                      </div>
+                      <Link
+                        href="/por-que-elegirnos"
+                        className="block px-4 py-3 text-gray-900 hover:text-gray-700 hover:bg-dropdown-opened transition-colors"
+                        style={{ letterSpacing: "3px" }}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        PORQUÉ ELEGIRNOS?
+                      </Link>
+                      <div className="flex justify-center mb-3">
+                        <div className="w-[226px] h-[1px] bg-gray-950"></div>
+                      </div>
+                      <Link
+                        href="/actualidad"
+                        className="block px-4 py-3 text-gray-900 hover:text-gray-700 hover:bg-dropdown-opened transition-colors"
+                        style={{ letterSpacing: "3px" }}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        ACTUALIDAD
+                      </Link>
+                      <div className="flex justify-center mb-3">
+                        <div className="w-[226px] h-[1px] bg-gray-950"></div>
+                      </div>
+                      <Link
+                        href="/contacto"
+                        className="block px-4 py-3 text-gray-900 font-extrabold hover:text-gray-700 hover:bg-dropdown-opened transition-colors"
+                        style={{ letterSpacing: "3px" }}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        CONTACTO
+                      </Link>
                     </div>
-                    <Link
-                      href="/tratamientos"
-                      className="block px-4 py-3 text-gray-900 hover:text-gray-700 hover:bg-dropdown-opened transition-colors"
-                      style={{ letterSpacing: "3px" }}
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      TRATAMIENTOS
-                    </Link>
-                    <div className="flex justify-center mb-3">
-                      <div className="w-[226px] h-[1px] bg-gray-950"></div>
-                    </div>
-                    <Link
-                      href="/por-que-elegirnos"
-                      className="block px-4 py-3 text-gray-900 hover:text-gray-700 hover:bg-dropdown-opened transition-colors"
-                      style={{ letterSpacing: "3px" }}
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      PORQUÉ ELEGIRNOS?
-                    </Link>
-                    <div className="flex justify-center mb-3">
-                      <div className="w-[226px] h-[1px] bg-gray-950"></div>
-                    </div>
-                    <Link
-                      href="/actualidad"
-                      className="block px-4 py-3 text-gray-900 hover:text-gray-700 hover:bg-dropdown-opened transition-colors"
-                      style={{ letterSpacing: "3px" }}
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      ACTUALIDAD
-                    </Link>
-                    <div className="flex justify-center mb-3">
-                      <div className="w-[226px] h-[1px] bg-gray-950"></div>
-                    </div>
-                    <Link
-                      href="/contacto"
-                      className="block px-4 py-3 text-gray-900 font-extrabold hover:text-gray-700 hover:bg-dropdown-opened transition-colors"
-                      style={{ letterSpacing: "3px" }}
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      CONTACTO
-                    </Link>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
         </nav>
