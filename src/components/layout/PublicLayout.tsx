@@ -38,7 +38,7 @@ export function PublicLayout({ children }: PublicLayoutProps) {
             </div>
 
             {/* Desktop navigation */}
-            <div className="absolute right-[245px] flex items-center h-full space-x-8">
+            <div className="absolute right-[245px] flex items-center h-full space-x-16">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
