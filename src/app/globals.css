@@ -316,6 +316,31 @@
   font-display: swap;
 }
 
+/* Times Font Face Declarations */
+@font-face {
+  font-family: "Times";
+  src: url("/fonts/Times/Times-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Times";
+  src: url("/fonts/Times/Times-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Times";
+  src: url("/fonts/Times/Times-SemiBoldItalic.ttf") format("truetype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -335,6 +360,7 @@
   --font-hero: "Playfair Display", serif;
   --font-main: "SF Pro Display", "SF Pro Text", -apple-system,
     BlinkMacSystemFont, system-ui, sans-serif;
+  --font-serif: "Times", serif;
   --font-weight-main: 400;
 
   /* Original shadcn/ui theme variables */
