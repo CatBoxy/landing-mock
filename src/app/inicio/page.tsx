@@ -224,6 +224,118 @@ export default function InicioPage() {
         </div>
       </div>
 
+      {/* Desktop Tratamientos Section */}
+      <div className="hidden md:flex items-center flex-col mt-[223px] mb-[93px] text-center">
+        <h2
+          className="font-serif font-bold text-[45px] text-black"
+          style={{ letterSpacing: "0px" }}
+        >
+          Tratamientos
+        </h2>
+
+        {/* Subtitle */}
+        <p
+          className="font-sf-pro font-thin text-[20px] text-black max-w-4xl mx-auto mt-[117px]"
+          style={{
+            lineHeight: "30px",
+            letterSpacing: "0px"
+          }}
+        >
+          Cada tratamiento es pensado como parte de una{" "}
+          <span className="font-semibold">experiencia integral</span>, guiada{" "}
+          <br />
+          por{" "}
+          <span className="font-semibold">
+            la ciencia, la sensibilidad y el respeto
+          </span>{" "}
+          por la identidad de cada paciente.
+        </p>
+
+        {/* Tratamientos Card */}
+        <div
+          className="w-[1075px] h-[442px] bg-tertiary-bg rounded-lg mt-[105px] flex"
+          style={{ padding: "35px 60px 90px" }}
+        >
+          {/* Cirugía Plástica Section */}
+          <div className="flex-1 flex flex-col items-center justify-center">
+            <div className="w-[44px] h-[44px] border-2 border-white rounded-full flex items-center justify-center mb-[24px]">
+              <div className="w-[22px] h-[22px] bg-[#D9D9D9] rounded-full"></div>
+            </div>
+            <h4
+              className="font-hero font-medium text-[35px] text-white text-center mb-[19px]"
+              style={{ lineHeight: "38px" }}
+            >
+              Cirugía
+              <br />
+              Plástica
+            </h4>
+            <p
+              className="font-main font-thin text-[16px] text-white text-center max-w-xs mb-4"
+              style={{ lineHeight: "16px" }}
+            >
+              Acompañamos cada cirugía <br /> plástica con profesionalismo y{" "}
+              <br /> un enfoque personalizado para <br /> lograr resultados
+              naturales.
+            </p>
+            <button className="w-[157px] h-[50px] bg-white rounded text-black font-main font-semibold text-[12px]">
+              Ver más
+            </button>
+          </div>
+
+          {/* Estética Médica Section */}
+          <div className="flex-1 flex flex-col items-center justify-center">
+            <div className="w-[44px] h-[44px] border-2 border-white rounded-full flex items-center justify-center mb-[24px]">
+              <div className="w-[22px] h-[22px] bg-[#D9D9D9] rounded-full"></div>
+            </div>
+            <h4
+              className="font-hero font-medium text-[35px] text-white text-center mb-[19px]"
+              style={{ lineHeight: "38px" }}
+            >
+              Estética
+              <br />
+              Médica
+            </h4>
+            <p
+              className="font-main font-thin text-[16px] text-white text-center max-w-xs mb-4"
+              style={{ lineHeight: "20px" }}
+            >
+              La estética médica es un <br /> cuidado preciso y consciente{" "}
+              <br /> que realza la belleza natural <br /> sin alterar la
+              esencia.
+            </p>
+            <button className="w-[157px] h-[50px] bg-white rounded text-black font-main font-semibold text-[12px]">
+              Ver más
+            </button>
+          </div>
+
+          {/* Mini Invasivos Section */}
+          <div className="flex-1 flex flex-col items-center justify-center">
+            <div className="w-[44px] h-[44px] border-2 border-white rounded-full flex items-center justify-center mb-[24px]">
+              <div className="w-[22px] h-[22px] bg-[#D9D9D9] rounded-full"></div>
+            </div>
+            <h4
+              className="font-hero font-medium text-[35px] text-white text-center mb-[19px]"
+              style={{ lineHeight: "38px" }}
+            >
+              Mini
+              <br />
+              Invasivos
+            </h4>
+            <p
+              className="font-main font-thin text-[16px] text-white text-center max-w-xs mb-4"
+              style={{ lineHeight: "20px" }}
+            >
+              Tratamientos no invasivos, <br /> seguros y personalizados <br />{" "}
+              para lograr resultados
+              <br /> naturales y efectivos.
+            </p>
+            <button className="w-[157px] h-[50px] bg-white rounded text-black font-main font-semibold text-[12px]">
+              Ver más
+            </button>
+          </div>
+        </div>
+      </div>
+
       {/* Mobile Only Text Section */}
       <div className="md:hidden h-[152px] bg-main-bg flex items-center justify-center px-4">
         <div className="text-center max-w-sm text-justify">

@@ -14,7 +14,7 @@ export function TratamientoCard({
       {/* First Section - Icon and Title */}
       <div className="flex-1 flex flex-col justify-center space-y-2">
         <div className="w-3 h-3 border-2 border-white rounded-full flex items-center justify-center ml-6">
-          <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+          <div className="w-1.5 h-1.5 bg-[#D9D9D9] rounded-full"></div>
         </div>
         <div className="text-left">
           <h4
