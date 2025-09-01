@@ -336,6 +336,98 @@ export default function InicioPage() {
         </div>
       </div>
 
+      {/* Desktop "¿Por qué elegirnos?" Section */}
+      <div className="hidden md:block bg-[#C8C8C8] h-[1190px]">
+        <div className="pt-[229px] text-center">
+          <h2 className="font-serif font-bold text-[45px] text-black">
+            ¿Por qué elegirnos?
+          </h2>
+
+          {/* Image */}
+          <div className="mt-[86px]">
+            <img
+              src="/por-que-elegirnos.png"
+              alt="¿Por qué elegirnos?"
+              className="mx-auto"
+              style={{ width: "1055px", height: "676px" }}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop Actualidad Section */}
+      <div className="hidden md:block">
+        <div className="mt-[77px] text-center">
+          <h2 className="font-serif font-bold text-[45px] text-black">
+            Actualidad
+          </h2>
+
+          {/* Subtitle */}
+          <p
+            className="font-sf-pro font-thin text-[20px] text-black max-w-4xl mx-auto mt-[46px]"
+            style={{ lineHeight: "30px" }}
+          >
+            Entendemos que cada persona es{" "}
+            <span className="font-medium">única</span>, y por eso, ofrecemos un
+            enfoque
+            <br /> personalizado que se adapta a{" "}
+            <span className="font-medium">tus sueños y expectativas</span>.
+          </p>
+
+          {/* Blog Article Cards Grid */}
+          <div className="mt-[116px] grid grid-cols-3 gap-x-[20px] max-w-6xl mx-auto">
+            <BlogArticleCard
+              imageSrc="/hero-bg.png"
+              imageAlt="Nuevas Tendencias"
+              title="Nuevas Tendencias"
+              subtitle="Innovaciones en medicina estética"
+              text="Descubre las últimas técnicas y tratamientos que están revolucionando el campo de la medicina estética."
+              author="Dr. German Miranda Marini"
+            />
+            <BlogArticleCard
+              imageSrc="/hero-bg.png"
+              imageAlt="Cuidado Post-Tratamiento"
+              title="Cuidado Post-Tratamiento"
+              subtitle="Guía completa de recuperación"
+              text="Consejos esenciales para optimizar los resultados y mantener la salud de tu piel después de cualquier procedimiento."
+              author="Dr. German Miranda Marini"
+            />
+            <BlogArticleCard
+              imageSrc="/hero-bg.png"
+              imageAlt="Bienestar Integral"
+              title="Bienestar Integral"
+              subtitle="Salud física y mental"
+              text="Cómo la medicina estética contribuye al bienestar general y la confianza personal de cada paciente."
+              author="Dr. German Miranda Marini"
+            />
+            <BlogArticleCard
+              imageSrc="/hero-bg.png"
+              imageAlt="Tecnología Avanzada"
+              title="Tecnología Avanzada"
+              subtitle="Equipamiento de última generación"
+              text="Nuestras instalaciones cuentan con la tecnología más avanzada para garantizar tratamientos seguros y efectivos."
+              author="Dr. German Miranda Marini"
+            />
+            <BlogArticleCard
+              imageSrc="/hero-bg.png"
+              imageAlt="Nutrición y Belleza"
+              title="Nutrición y Belleza"
+              subtitle="Alimentación para la piel"
+              text="La importancia de una dieta equilibrada en el mantenimiento de la salud y belleza de la piel."
+              author="Dr. German Miranda Marini"
+            />
+            <BlogArticleCard
+              imageSrc="/hero-bg.png"
+              imageAlt="Envejecimiento Saludable"
+              title="Envejecimiento Saludable"
+              subtitle="Aceptación y cuidado"
+              text="Cómo envejecer de manera saludable manteniendo la autoestima y el bienestar personal."
+              author="Dr. German Miranda Marini"
+            />
+          </div>
+        </div>
+      </div>
+
       {/* Mobile Only Text Section */}
       <div className="md:hidden h-[152px] bg-main-bg flex items-center justify-center px-4">
         <div className="text-center max-w-sm text-justify">
