@@ -375,7 +375,7 @@ export default function InicioPage() {
           </p>
 
           {/* Blog Article Cards Grid */}
-          <div className="mt-[116px] grid grid-cols-3 gap-x-[20px] max-w-6xl mx-auto">
+          <div className="mt-[116px] grid grid-cols-3 gap-x-[20px] max-w-[1075px] mx-auto">
             <BlogArticleCard
               imageSrc="/hero-bg.png"
               imageAlt="Nuevas Tendencias"
