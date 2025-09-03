@@ -82,7 +82,7 @@ export function Dropdown({
         } shadow-[2px_2px_4px_rgba(0,0,0,0.1)]`}
       >
         <div className="flex items-center justify-between">
-          <span className="font-main font-medium text-sm text-black">
+          <span className="font-main font-medium text-sm md:text-[20px] text-black">
             {title}
           </span>
           {(hasContent || hasChildren) && (
