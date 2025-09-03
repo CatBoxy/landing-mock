@@ -479,4 +479,16 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Offset scroll position to account for fixed headers if needed */
+  @media (min-width: 768px) {
+    html {
+      scroll-padding-top: 2rem;
+    }
+  }
 }

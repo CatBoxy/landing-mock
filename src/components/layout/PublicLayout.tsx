@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Send } from "lucide-react";
 import Link from "next/link";
@@ -13,11 +13,11 @@ export function PublicLayout({ children }: PublicLayoutProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navigation = [
-    { name: "NOSOTROS", href: "/nosotros" },
+    { name: "NOSOTROS", href: "/inicio#doctor-section" },
     { name: "TRATAMIENTOS", href: "/tratamientos" },
-    { name: "PORQUÉ ELEGIRNOS?", href: "/por-que-elegirnos" },
-    { name: "ACTUALIDAD", href: "/actualidad" },
-    { name: "CONTACTO", href: "/contacto" }
+    { name: "PORQUÉ ELEGIRNOS?", href: "/inicio#por-que-elegirnos-section" },
+    { name: "ACTUALIDAD", href: "/inicio#actualidad-section" },
+    { name: "CONTACTO", href: "/inicio#contacto-section" }
   ];
 
   return (
@@ -114,14 +114,14 @@ export function PublicLayout({ children }: PublicLayoutProps) {
                 {mobileMenuOpen && (
                   <div className="absolute right-0 top-full mt-2 w-64 bg-[#F7EEEB] shadow-lg border border-gray-200 z-50">
                     <div className="py-4">
-                      <Link
-                        href="/nosotros"
+                      <a
+                        href="/inicio#doctor-section"
                         className="block px-4 py-3 text-gray-900 hover:text-gray-700 hover:bg-dropdown-opened transition-colors"
                         style={{ letterSpacing: "3px" }}
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         NOSOTROS
-                      </Link>
+                      </a>
                       <div className="flex justify-center mb-3">
                         <div className="w-[226px] h-[1px] bg-gray-950"></div>
                       </div>
@@ -136,36 +136,36 @@ export function PublicLayout({ children }: PublicLayoutProps) {
                       <div className="flex justify-center mb-3">
                         <div className="w-[226px] h-[1px] bg-gray-950"></div>
                       </div>
-                      <Link
-                        href="/por-que-elegirnos"
+                      <a
+                        href="/inicio#por-que-elegirnos-section"
                         className="block px-4 py-3 text-gray-900 hover:text-gray-700 hover:bg-dropdown-opened transition-colors"
                         style={{ letterSpacing: "3px" }}
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         PORQUÉ ELEGIRNOS?
-                      </Link>
+                      </a>
                       <div className="flex justify-center mb-3">
                         <div className="w-[226px] h-[1px] bg-gray-950"></div>
                       </div>
-                      <Link
-                        href="/actualidad"
+                      <a
+                        href="/inicio#actualidad-section"
                         className="block px-4 py-3 text-gray-900 hover:text-gray-700 hover:bg-dropdown-opened transition-colors"
                         style={{ letterSpacing: "3px" }}
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         ACTUALIDAD
-                      </Link>
+                      </a>
                       <div className="flex justify-center mb-3">
                         <div className="w-[226px] h-[1px] bg-gray-950"></div>
                       </div>
-                      <Link
-                        href="/contacto"
+                      <a
+                        href="/inicio#contacto-section"
                         className="block px-4 py-3 text-gray-900 font-extrabold hover:text-gray-700 hover:bg-dropdown-opened transition-colors"
                         style={{ letterSpacing: "3px" }}
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         CONTACTO
-                      </Link>
+                      </a>
                     </div>
                   </div>
                 )}
@@ -189,13 +189,13 @@ export function PublicLayout({ children }: PublicLayoutProps) {
 
               {/* Navigation items */}
               <div className="flex flex-col items-center mt-[28px]">
-                <Link
-                  href="/nosotros"
+                <a
+                  href="/inicio#doctor-section"
                   className="text-sm text-gray-300 hover:text-white transition-colors"
                   style={{ letterSpacing: "3px" }}
                 >
                   NOSOTROS
-                </Link>
+                </a>
                 <Link
                   href="/tratamientos"
                   className="text-sm text-gray-300 hover:text-white transition-colors mt-[18px]"
@@ -203,27 +203,27 @@ export function PublicLayout({ children }: PublicLayoutProps) {
                 >
                   TRATAMIENTOS
                 </Link>
-                <Link
-                  href="/por-que-elegirnos"
+                <a
+                  href="/inicio#por-que-elegirnos-section"
                   className="text-sm text-gray-300 hover:text-white transition-colors mt-[18px]"
                   style={{ letterSpacing: "3px" }}
                 >
                   PORQUE ELEGIRNOS?
-                </Link>
-                <Link
-                  href="/actualidad"
+                </a>
+                <a
+                  href="/inicio#actualidad-section"
                   className="text-sm text-gray-300 hover:text-white transition-colors mt-[18px]"
                   style={{ letterSpacing: "3px" }}
                 >
                   ACTUALIDAD
-                </Link>
-                <Link
-                  href="/contacto"
+                </a>
+                <a
+                  href="/inicio#contacto-section"
                   className="text-sm text-gray-300 font-extrabold hover:text-white transition-colors mt-[18px]"
                   style={{ letterSpacing: "3px" }}
                 >
                   CONTACTO
-                </Link>
+                </a>
               </div>
 
               {/* Button */}
@@ -295,13 +295,13 @@ export function PublicLayout({ children }: PublicLayoutProps) {
 
             {/* Navigation Column */}
             <div className="absolute left-[801px] top-[101px] flex flex-col items-start space-y-[18px]">
-              <Link
-                href="/nosotros"
+              <a
+                href="/inicio#doctor-section"
                 className="text-sm text-gray-300 hover:text-white transition-colors"
                 style={{ letterSpacing: "3px" }}
               >
                 NOSOTROS
-              </Link>
+              </a>
               <Link
                 href="/tratamientos"
                 className="text-sm text-gray-300 hover:text-white transition-colors"
@@ -309,27 +309,27 @@ export function PublicLayout({ children }: PublicLayoutProps) {
               >
                 TRATAMIENTOS
               </Link>
-              <Link
-                href="/por-que-elegirnos"
+              <a
+                href="/inicio#por-que-elegirnos-section"
                 className="text-sm text-gray-300 hover:text-white transition-colors"
                 style={{ letterSpacing: "3px" }}
               >
                 PORQUE ELEGIRNOS?
-              </Link>
-              <Link
-                href="/actualidad"
+              </a>
+              <a
+                href="/inicio#actualidad-section"
                 className="text-sm text-gray-300 hover:text-white transition-colors"
                 style={{ letterSpacing: "3px" }}
               >
                 ACTUALIDAD
-              </Link>
-              <Link
-                href="/contacto"
+              </a>
+              <a
+                href="/inicio#contacto-section"
                 className="text-sm text-gray-300 font-extrabold hover:text-white transition-colors"
                 style={{ letterSpacing: "3px" }}
               >
                 CONTACTO
-              </Link>
+              </a>
             </div>
 
             {/* Social Links Column */}
