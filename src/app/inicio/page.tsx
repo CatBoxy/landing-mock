@@ -9,7 +9,7 @@ export default function InicioPage() {
   return (
     <PublicLayout>
       {/* Hero Section */}
-      <div className="bg-[url('/hero-bg-mobile.png')] md:bg-[url('/hero-bg.png')] bg-[position:bottom_left] bg-cover md:bg-[size:110%_auto] h-[378px] md:h-[1162px]">
+      <div className="bg-[url('/hero-bg-mobile.png')] md:bg-[url('/hero-bg.png')] bg-[position:bottom_left] bg-cover md:bg-[size:110%_auto] h-[378px] md:h-[1162px] relative">
         <div className="bg-gradient-to-b from-black/50 to-neutral-300/50 h-full flex flex-col px-4">
           <div className="text-center pt-[98px] md:pt-[114px] flex-1 flex flex-col justify-between">
             <div>
@@ -114,6 +114,30 @@ export default function InicioPage() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Mobile Buttons - Positioned over hero image */}
+        <div className="md:hidden absolute bottom-[30px] left-1/2 transform -translate-x-1/2 flex flex-row items-center space-x-3">
+          {/* Button 1: Black background, "Reservá tu turno" + WhatsApp icon */}
+          <Link
+            href="/contacto"
+            className="bg-black text-white font-medium flex items-center justify-center space-x-2 hover:bg-gray-800 transition-colors"
+            style={{ width: "160px", height: "30px", borderRadius: "1px" }}
+          >
+            <span className="text-xs">Reservá tu turno</span>
+            <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
+            </svg>
+          </Link>
+
+          {/* Button 2: Transparent background, white thin border */}
+          <Link
+            href="/tratamientos"
+            className="border border-white text-white font-medium flex items-center justify-center space-x-2 hover:bg-white hover:text-black transition-colors"
+            style={{ width: "160px", height: "30px", borderRadius: "1px" }}
+          >
+            <span className="text-xs">Ver tratamientos</span>
+          </Link>
         </div>
       </div>
 
@@ -436,29 +460,15 @@ export default function InicioPage() {
 
       {/* Mobile Only Text Section */}
       <div className="md:hidden h-[152px] bg-main-bg flex items-center justify-center px-4">
-        <div className="text-center max-w-sm text-justify">
-          <p className="text-black font-main text-[12px] leading-[13px]">
-            <span className="font-thin">Somos más que una clínica: </span>
-            <span className="font-semibold">
-              somos una cultura
-              <br />
-              de cuidado.
-            </span>
-          </p>
-          <p className="text-black font-main text-[12px] leading-[13px]">
-            <span className="font-thin">Creemos en una </span>
-            <span className="font-semibold">
-              estética ética, basada en la ciencia,
-              <br />
-              el respeto y la escucha real.
-            </span>
-          </p>
-          <p className="text-black font-main text-[12px] leading-[13px] font-light">
-            Acompañamos a cada paciente con tratamientos
-            <br />
-            personalizados y atención humana, para que vuelvas a
-            <br />
-            habitar tu cuerpo con confianza y libertad.
+        <div className="text-center max-w-sm text-center">
+          <p className="text-black font-main text-[14px] leading-[13px]">
+            Somos más que una clínica: <br />
+            somos una cultura de cuidado. <br />
+            Creemos en una estética ética, basada en la <br />
+            ciencia, el respeto y la escucha real. <br />
+            Acompañamos a cada paciente con tratamientos <br />
+            personalizados y atención humana, para que <br />
+            vuelvas a habitar tu cuerpo con confianza <br />y libertad.
           </p>
         </div>
       </div>
@@ -584,21 +594,21 @@ export default function InicioPage() {
         {/* Subtitle with Mixed Weights */}
         <div className="flex justify-center px-4">
           <div className="w-full max-w-sm">
-            <p className="text-center" style={{ lineHeight: "13px" }}>
-              <span className="font-main font-thin text-[12px]">
-                Cada tratamiento es pensado como parte de una
-                <br />
+            <p className="text-center" style={{ lineHeight: "15px" }}>
+              <span className="font-main font-thin text-[14px]">
+                Cada tratamiento es pensado como <br />
+                parte de una{" "}
               </span>
-              <span className="font-main font-semibold text-[12px]">
+              <span className="font-main font-semibold text-[14px]">
                 experiencia integral
               </span>
-              <span className="font-main font-thin text-[12px]">
+              <span className="font-main font-thin text-[14px]">
                 , guiada por{" "}
               </span>
-              <span className="font-main font-semibold text-[12px]">
+              <span className="font-main font-semibold text-[14px]">
                 la <br /> ciencia, la sensibilidad y el respeto
               </span>
-              <span className="font-main font-thin text-[12px]">
+              <span className="font-main font-thin text-[14px]">
                 {" "}
                 por la <br /> identidad de cada paciente.
               </span>
