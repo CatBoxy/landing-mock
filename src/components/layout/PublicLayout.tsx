@@ -1,17 +1,13 @@
-"use client";
-
-import React, { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
+import React from "react";
 import { Send } from "lucide-react";
 import Link from "next/link";
+import { MobileMenu } from "@/components/MobileMenu";
 
 interface PublicLayoutProps {
   children: React.ReactNode;
 }
 
 export function PublicLayout({ children }: PublicLayoutProps) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   const navigation = [
     { name: "NOSOTROS", href: "/inicio#doctor-section" },
     { name: "TRATAMIENTOS", href: "/tratamientos" },
@@ -68,108 +64,7 @@ export function PublicLayout({ children }: PublicLayoutProps) {
               </div>
 
               {/* Mobile menu button */}
-              <div className="md:hidden relative">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="text-black p-1"
-                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                >
-                  <svg
-                    className="text-black"
-                    style={{ width: "29px", height: "22px" }}
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <line
-                      x1={mobileMenuOpen ? "18" : "3"}
-                      y1={mobileMenuOpen ? "6" : "6"}
-                      x2={mobileMenuOpen ? "6" : "21"}
-                      y2={mobileMenuOpen ? "18" : "6"}
-                    />
-                    <line
-                      x1={mobileMenuOpen ? "6" : "3"}
-                      y1={mobileMenuOpen ? "6" : "12"}
-                      x2={mobileMenuOpen ? "18" : "21"}
-                      y2={mobileMenuOpen ? "18" : "12"}
-                    />
-                    <line
-                      x1="3"
-                      y1="18"
-                      x2="21"
-                      y2="18"
-                      className={mobileMenuOpen ? "opacity-0" : "opacity-100"}
-                    />
-                  </svg>
-                  <span className="sr-only">
-                    {mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
-                  </span>
-                </Button>
-
-                {/* Dropdown Menu */}
-                {mobileMenuOpen && (
-                  <div className="absolute right-0 top-full mt-2 w-64 bg-[#F7EEEB] shadow-lg border border-gray-200 z-50">
-                    <div className="py-4">
-                      <a
-                        href="/inicio#doctor-section"
-                        className="block px-4 py-3 text-gray-900 hover:text-gray-700 hover:bg-dropdown-opened transition-colors"
-                        style={{ letterSpacing: "3px" }}
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        NOSOTROS
-                      </a>
-                      <div className="flex justify-center mb-3">
-                        <div className="w-[226px] h-[1px] bg-gray-950"></div>
-                      </div>
-                      <Link
-                        href="/tratamientos"
-                        className="block px-4 py-3 text-gray-900 hover:text-gray-700 hover:bg-dropdown-opened transition-colors"
-                        style={{ letterSpacing: "3px" }}
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        TRATAMIENTOS
-                      </Link>
-                      <div className="flex justify-center mb-3">
-                        <div className="w-[226px] h-[1px] bg-gray-950"></div>
-                      </div>
-                      <a
-                        href="/inicio#por-que-elegirnos-section"
-                        className="block px-4 py-3 text-gray-900 hover:text-gray-700 hover:bg-dropdown-opened transition-colors"
-                        style={{ letterSpacing: "3px" }}
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        PORQUÉ ELEGIRNOS?
-                      </a>
-                      <div className="flex justify-center mb-3">
-                        <div className="w-[226px] h-[1px] bg-gray-950"></div>
-                      </div>
-                      <a
-                        href="/inicio#actualidad-section"
-                        className="block px-4 py-3 text-gray-900 hover:text-gray-700 hover:bg-dropdown-opened transition-colors"
-                        style={{ letterSpacing: "3px" }}
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        ACTUALIDAD
-                      </a>
-                      <div className="flex justify-center mb-3">
-                        <div className="w-[226px] h-[1px] bg-gray-950"></div>
-                      </div>
-                      <a
-                        href="/inicio#contacto-section"
-                        className="block px-4 py-3 text-gray-900 font-extrabold hover:text-gray-700 hover:bg-dropdown-opened transition-colors"
-                        style={{ letterSpacing: "3px" }}
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        CONTACTO
-                      </a>
-                    </div>
-                  </div>
-                )}
-              </div>
+              <MobileMenu navigation={navigation} />
             </div>
           </div>
         </nav>

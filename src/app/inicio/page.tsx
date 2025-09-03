@@ -664,6 +664,7 @@ export default function InicioPage() {
       <div
         className="md:hidden bg-secondary-bg pb-8 pt-10"
         style={{ marginTop: "16px" }}
+        id="por-que-elegirnos-section-mobile"
       >
         <div className="flex flex-col items-center space-y-6">
           <h3 className="font-hero font-bold text-[18px] text-black text-center mb-0">
@@ -681,7 +682,7 @@ export default function InicioPage() {
       </div>
 
       {/* Actualidad Section */}
-      <div className="md:hidden bg-white py-8">
+      <div className="md:hidden bg-white py-8" id="actualidad-section-mobile">
         <div className="flex flex-col items-center space-y-6">
           <h3 className="font-hero font-bold text-[18px] text-black text-center mb-0">
             Actualidad
@@ -759,7 +760,7 @@ export default function InicioPage() {
       </div>
 
       {/* Mobile Contacto Section */}
-      <div className="md:hidden">
+      <div className="md:hidden" id="contacto-section-mobile">
         <ContactoSection />
       </div>
     </PublicLayout>
