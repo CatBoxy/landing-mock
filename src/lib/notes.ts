@@ -89,6 +89,42 @@ export class NotesService {
   }
 
   /**
+   * Get notes that have images
+   */
+  static async getNotesWithImages(
+    params: PaginationParams = {}
+  ): Promise<NotesResponse> {
+    try {
+      const { page = 0, size = 10 } = params;
+      const queryParams = new URLSearchParams({
+        page: page.toString(),
+        size: size.toString()
+      });
+
+      const response = await AuthService.authenticatedFetch(
+        `${API_BASE_URL}/notes/with-images?${queryParams}`
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new NotesError(
+          errorData.message || "Error al obtener las notas con imágenes",
+          response.status
+        );
+      }
+
+      return await response.json();
+    } catch (error) {
+      if (error instanceof NotesError) {
+        throw error;
+      }
+      throw new NotesError(
+        "Error de conexión al obtener las notas con imágenes"
+      );
+    }
+  }
+
+  /**
    * Get a single note by ID
    */
   static async getNoteById(id: number): Promise<Note> {

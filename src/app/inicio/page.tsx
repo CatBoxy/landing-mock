@@ -4,8 +4,11 @@ import { TratamientoCard } from "@/components/TratamientoCard";
 import { BlogArticleCard } from "@/components/BlogArticleCard";
 import { ContactoSection } from "@/components/ContactoSection";
 import { ChevronDown } from "lucide-react";
+import { getNotesForHomepage } from "@/app/services/server/get";
 
-export default function InicioPage() {
+export default async function InicioPage() {
+  // Fetch articles data on the server side
+  const articles = await getNotesForHomepage();
   return (
     <PublicLayout>
       {/* Hero Section */}
@@ -425,54 +428,17 @@ export default function InicioPage() {
 
           {/* Blog Article Cards Grid */}
           <div className="mt-[116px] grid grid-cols-3 gap-x-[20px] max-w-[1075px] mx-auto">
-            <BlogArticleCard
-              imageSrc="/hero-bg.png"
-              imageAlt="Nuevas Tendencias"
-              title="Nuevas Tendencias"
-              subtitle="Innovaciones en medicina estética"
-              text="Descubre las últimas técnicas y tratamientos que están revolucionando el campo de la medicina estética."
-              author="Dr. German Miranda Marini"
-            />
-            <BlogArticleCard
-              imageSrc="/hero-bg.png"
-              imageAlt="Cuidado Post-Tratamiento"
-              title="Cuidado Post-Tratamiento"
-              subtitle="Guía completa de recuperación"
-              text="Consejos esenciales para optimizar los resultados y mantener la salud de tu piel después de cualquier procedimiento."
-              author="Dr. German Miranda Marini"
-            />
-            <BlogArticleCard
-              imageSrc="/hero-bg.png"
-              imageAlt="Bienestar Integral"
-              title="Bienestar Integral"
-              subtitle="Salud física y mental"
-              text="Cómo la medicina estética contribuye al bienestar general y la confianza personal de cada paciente."
-              author="Dr. German Miranda Marini"
-            />
-            <BlogArticleCard
-              imageSrc="/hero-bg.png"
-              imageAlt="Tecnología Avanzada"
-              title="Tecnología Avanzada"
-              subtitle="Equipamiento de última generación"
-              text="Nuestras instalaciones cuentan con la tecnología más avanzada para garantizar tratamientos seguros y efectivos."
-              author="Dr. German Miranda Marini"
-            />
-            <BlogArticleCard
-              imageSrc="/hero-bg.png"
-              imageAlt="Nutrición y Belleza"
-              title="Nutrición y Belleza"
-              subtitle="Alimentación para la piel"
-              text="La importancia de una dieta equilibrada en el mantenimiento de la salud y belleza de la piel."
-              author="Dr. German Miranda Marini"
-            />
-            <BlogArticleCard
-              imageSrc="/hero-bg.png"
-              imageAlt="Envejecimiento Saludable"
-              title="Envejecimiento Saludable"
-              subtitle="Aceptación y cuidado"
-              text="Cómo envejecer de manera saludable manteniendo la autoestima y el bienestar personal."
-              author="Dr. German Miranda Marini"
-            />
+            {articles.map((article, index) => (
+              <BlogArticleCard
+                key={index}
+                imageSrc={article.imageSrc}
+                imageAlt={article.imageAlt}
+                title={article.title}
+                subtitle={article.subtitle}
+                text={article.text}
+                author={article.author}
+              />
+            ))}
           </div>
         </div>
       </div>
@@ -707,54 +673,17 @@ export default function InicioPage() {
 
           {/* Blog Article Cards Grid */}
           <div className="grid grid-cols-2 gap-4 px-5 w-full max-w-sm mt-6">
-            <BlogArticleCard
-              imageSrc="/hero-bg.png"
-              imageAlt="Blog article 1"
-              title="Nuevas Tendencias"
-              subtitle="Innovaciones en medicina estética"
-              text="Descubre las últimas técnicas y tratamientos que están revolucionando el campo de la medicina estética."
-              author="Dr. German Miranda Marini"
-            />
-            <BlogArticleCard
-              imageSrc="/hero-bg.png"
-              imageAlt="Blog article 2"
-              title="Cuidado Post-Tratamiento"
-              subtitle="Guía completa de recuperación"
-              text="Consejos esenciales para optimizar los resultados y mantener la salud de tu piel después de cualquier procedimiento."
-              author="Dr. German Miranda Marini"
-            />
-            <BlogArticleCard
-              imageSrc="/hero-bg.png"
-              imageAlt="Blog article 3"
-              title="Bienestar Integral"
-              subtitle="Salud física y mental"
-              text="Cómo la medicina estética contribuye al bienestar general y la confianza personal de cada paciente."
-              author="Dr. German Miranda Marini"
-            />
-            <BlogArticleCard
-              imageSrc="/hero-bg.png"
-              imageAlt="Blog article 4"
-              title="Tecnología Avanzada"
-              subtitle="Equipamiento de última generación"
-              text="Nuestras instalaciones cuentan con la tecnología más avanzada para garantizar tratamientos seguros y efectivos."
-              author="Dr. German Miranda Marini"
-            />
-            <BlogArticleCard
-              imageSrc="/hero-bg.png"
-              imageAlt="Blog article 5"
-              title="Nutrición y Belleza"
-              subtitle="Alimentación para la piel"
-              text="La importancia de una dieta equilibrada en el mantenimiento de la salud y belleza de la piel."
-              author="Dr. German Miranda Marini"
-            />
-            <BlogArticleCard
-              imageSrc="/hero-bg.png"
-              imageAlt="Blog article 6"
-              title="Envejecimiento Saludable"
-              subtitle="Aceptación y cuidado"
-              text="Cómo envejecer de manera saludable manteniendo la autoestima y el bienestar personal."
-              author="Dr. German Miranda Marini"
-            />
+            {articles.map((article, index) => (
+              <BlogArticleCard
+                key={index}
+                imageSrc={article.imageSrc}
+                imageAlt={article.imageAlt}
+                title={article.title}
+                subtitle={article.subtitle}
+                text={article.text}
+                author={article.author}
+              />
+            ))}
           </div>
         </div>
       </div>
