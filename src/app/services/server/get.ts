@@ -135,7 +135,7 @@ export async function getNotesForHomepage(): Promise<BlogArticleData[]> {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json"
         },
-        cache: "no-store" // Ensure fresh data for each request
+        next: { revalidate: 300 } // Cache for 5 minutes
       }
     );
 
@@ -188,7 +188,7 @@ export async function getNoteById(id: string): Promise<Note | null> {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json"
       },
-      cache: "no-store" // Ensure fresh data for each request
+      next: { revalidate: 300 } // Cache for 5 minutes
     });
 
     if (!response.ok) {
@@ -221,7 +221,7 @@ export async function getAllNotesWithImages(
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json"
         },
-        cache: "no-store" // Ensure fresh data for each request
+        next: { revalidate: 300 } // Cache for 5 minutes
       }
     );
 

@@ -6,6 +6,9 @@ import { ContactoSection } from "@/components/ContactoSection";
 import { ChevronDown } from "lucide-react";
 import { getNotesForHomepage } from "@/app/services/server/get";
 
+// Force dynamic rendering for this page since it fetches fresh data
+export const dynamic = "force-dynamic";
+
 export default async function InicioPage() {
   // Fetch articles data on the server side
   const articles = await getNotesForHomepage();
