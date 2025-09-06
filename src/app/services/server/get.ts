@@ -4,6 +4,7 @@ import type { Note } from "@/types/notes";
 const API_BASE_URL = "http://72.60.58.137/api";
 
 interface BlogArticleData {
+  id?: number;
   imageSrc: string;
   imageAlt: string;
   title: string;
@@ -86,7 +87,7 @@ function generateServerJWT(): string {
 /**
  * Process image URL to ensure it's a full URL
  */
-function processImageUrl(imageUrlOrFilename: string): string {
+export function processImageUrl(imageUrlOrFilename: string): string {
   // If it's already a full URL, return as is
   if (
     imageUrlOrFilename.startsWith("http://") ||
@@ -109,6 +110,7 @@ function processImageUrl(imageUrlOrFilename: string): string {
  */
 function noteToArticleData(note: Note): BlogArticleData {
   return {
+    id: note.id,
     imageSrc: note.imageUrl ? processImageUrl(note.imageUrl) : "/hero-bg.png",
     imageAlt: note.title,
     title: note.title,
@@ -165,5 +167,79 @@ export async function getNotesForHomepage(): Promise<BlogArticleData[]> {
   } catch (error) {
     console.error("Error fetching notes for homepage:", error);
     return fallbackArticles;
+  }
+}
+
+/**
+ * Get a single note by ID for individual blog article pages
+ */
+export async function getNoteById(id: string): Promise<Note | null> {
+  try {
+    const token = generateServerJWT();
+    const noteId = parseInt(id, 10);
+
+    if (isNaN(noteId)) {
+      console.warn("Invalid note ID provided:", id);
+      return null;
+    }
+
+    const response = await fetch(`${API_BASE_URL}/notes/${noteId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+      cache: "no-store" // Ensure fresh data for each request
+    });
+
+    if (!response.ok) {
+      console.warn("Failed to fetch note by ID:", response.status);
+      return null;
+    }
+
+    const note = await response.json();
+    return note;
+  } catch (error) {
+    console.error("Error fetching note by ID:", error);
+    return null;
+  }
+}
+
+/**
+ * Get all notes with images for sidebar/related articles
+ * Returns up to specified number of notes
+ */
+export async function getAllNotesWithImages(
+  limit: number = 10
+): Promise<Note[]> {
+  try {
+    const token = generateServerJWT();
+
+    const response = await fetch(
+      `${API_BASE_URL}/notes/with-images?page=0&size=${limit}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json"
+        },
+        cache: "no-store" // Ensure fresh data for each request
+      }
+    );
+
+    if (!response.ok) {
+      console.warn("Failed to fetch all notes with images:", response.status);
+      return [];
+    }
+
+    const data = await response.json();
+
+    if (!data.content || !Array.isArray(data.content)) {
+      console.warn("Invalid API response format for all notes");
+      return [];
+    }
+
+    return data.content;
+  } catch (error) {
+    console.error("Error fetching all notes with images:", error);
+    return [];
   }
 }

@@ -430,13 +430,14 @@ export default async function InicioPage() {
           <div className="mt-[116px] grid grid-cols-3 gap-x-[20px] max-w-[1075px] mx-auto">
             {articles.map((article, index) => (
               <BlogArticleCard
-                key={index}
+                key={article.id || index}
                 imageSrc={article.imageSrc}
                 imageAlt={article.imageAlt}
                 title={article.title}
                 subtitle={article.subtitle}
                 text={article.text}
                 author={article.author}
+                href={article.id ? `/blog/${article.id}` : undefined}
               />
             ))}
           </div>
@@ -675,13 +676,14 @@ export default async function InicioPage() {
           <div className="grid grid-cols-2 gap-4 px-5 w-full max-w-sm mt-6">
             {articles.map((article, index) => (
               <BlogArticleCard
-                key={index}
+                key={article.id || index}
                 imageSrc={article.imageSrc}
                 imageAlt={article.imageAlt}
                 title={article.title}
                 subtitle={article.subtitle}
                 text={article.text}
                 author={article.author}
+                href={article.id ? `/blog/${article.id}` : undefined}
               />
             ))}
           </div>

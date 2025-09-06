@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface BlogArticleCardProps {
   imageSrc: string;
@@ -59,12 +60,12 @@ export function BlogArticleCard({
 
   if (href) {
     return (
-      <a
+      <Link
         href={href}
         className="block hover:shadow-md transition-shadow duration-200"
       >
         {CardContent}
-      </a>
+      </Link>
     );
   }
 
