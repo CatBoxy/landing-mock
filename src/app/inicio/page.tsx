@@ -3,6 +3,7 @@ import Link from "next/link";
 import { TratamientoCard } from "@/components/TratamientoCard";
 import { BlogArticleCard } from "@/components/BlogArticleCard";
 import { ContactoSection } from "@/components/ContactoSection";
+import { DoctorInfoSection } from "@/components/DoctorInfoSection";
 import { ChevronDown } from "lucide-react";
 import { getNotesForHomepage } from "@/app/services/server/get";
 
@@ -17,10 +18,10 @@ export default async function InicioPage() {
       {/* Hero Section */}
       <div className="bg-[url('/hero-bg-mobile.png')] md:bg-[url('/hero-bg.png')] bg-[position:bottom_left] bg-cover md:bg-[size:110%_auto] h-[378px] md:h-[1162px] relative">
         <div className="bg-gradient-to-b from-black/50 to-neutral-300/50 h-full flex flex-col px-4">
-          <div className="text-center pt-[98px] md:pt-[114px] flex-1 flex flex-col justify-between">
-            <div>
+          <div className="text-center md:text-center pt-[98px] md:pt-[114px] flex-1 flex flex-col justify-between">
+            <div className="md:text-center">
               <h1
-                className="text-white text-[25px] md:text-[45px] font-hero font-semibold leading-tight md:leading-tight"
+                className="text-white text-[30px] md:text-[45px] font-hero font-semibold leading-tight md:leading-tight text-left md:text-center w-[160px] md:w-auto mb-[26px] md:mb-0"
                 style={{ letterSpacing: "0px" }}
               >
                 Cirugía Plástica y <br />
@@ -129,27 +130,15 @@ export default async function InicioPage() {
         </div>
 
         {/* Mobile Buttons - Positioned over hero image */}
-        <div className="md:hidden absolute bottom-[30px] left-1/2 transform -translate-x-1/2 flex flex-row items-center space-x-3">
-          {/* Button 1: Black background, "Reservá tu turno" + WhatsApp icon */}
+        <div className="md:hidden absolute bottom-[70px] left-[20px] flex flex-row items-center">
+          {/* Button: Black background, "Reservá tu turno" without icon */}
           <Link
             href="/contacto"
-            className="bg-black text-white font-medium flex items-center justify-center space-x-2 hover:bg-gray-800 transition-colors"
-            style={{ width: "160px", height: "30px", borderRadius: "1px" }}
+            className="bg-black text-white font-bold flex items-center justify-center hover:bg-gray-800 transition-colors"
+            style={{ width: "162px", height: "45px", borderRadius: "7px" }}
           >
-            <span className="text-xs">Reservá tu turno</span>
-            <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
-            </svg>
+            <span className="text-[14px]">Reservá tu turno</span>
           </Link>
-
-          {/* Button 2: Transparent background, white thin border */}
-          <a
-            href="#tratamientos-section"
-            className="border border-white text-white font-medium flex items-center justify-center space-x-2 hover:bg-white hover:text-black transition-colors"
-            style={{ width: "160px", height: "30px", borderRadius: "1px" }}
-          >
-            <span className="text-xs">Ver tratamientos</span>
-          </a>
         </div>
       </div>
 
@@ -453,31 +442,33 @@ export default async function InicioPage() {
       </div>
 
       {/* Mobile Only Text Section */}
-      <div className="md:hidden h-[152px] bg-main-bg flex items-center justify-center px-4">
-        <div className="text-center max-w-sm text-center">
-          <p className="text-black font-main text-[14px] leading-[13px]">
+      <div className="md:hidden bg-main-bg flex items-center justify-left px-[20px] pt-[20px] pb-[52px]">
+        <div className="text-left max-w-sm">
+          <p className="text-black font-main text-[18px] font-normal leading-[22px]">
             Somos más que una clínica: <br />
             somos una cultura de cuidado. <br />
-            Creemos en una estética ética, basada en la <br />
-            ciencia, el respeto y la escucha real. <br />
-            Acompañamos a cada paciente con tratamientos <br />
-            personalizados y atención humana, para que <br />
-            vuelvas a habitar tu cuerpo con confianza <br />y libertad.
+            Creemos en una estética ética, <br />
+            basada en la ciencia, el respeto y la <br />
+            escucha real. <br />
+            Acompañamos a cada paciente con <br />
+            tratamientos personalizados y <br />
+            atención humana, para que vuelvas <br />
+            a habitar tu cuerpo con confianza <br />y libertad.
           </p>
         </div>
       </div>
 
       {/* Divider Line */}
       <div className="md:hidden flex justify-center">
-        <div className="w-[288px] h-[1px] bg-black"></div>
+        <div className="w-[335px] h-[1px] bg-black"></div>
       </div>
 
       {/* Mobile Only Section - Habitar el Cuerpo */}
       <div className="md:hidden bg-main-bg">
         {/* Title Section */}
-        <div className="h-[54px] flex items-center justify-center">
+        <div className="flex items-center justify-left">
           <h2
-            className="text-black font-main font-regular text-lg uppercase"
+            className="text-black font-main font-regular text-lg uppercase pl-[20px] pt-[28px]"
             style={{ letterSpacing: "5px" }}
           >
             HABITAR EL CUERPO
@@ -485,21 +476,21 @@ export default async function InicioPage() {
         </div>
 
         {/* Subtitle Text Section */}
-        <div className="flex items-center justify-center px-4">
+        <div className="flex items-center justify-left px-4">
           <p
-            className="text-black font-serif font-bold italic text-[18px] text-center"
+            className="text-black font-serif font-bold italic text-[30px] text-left pt-[14px]"
             style={{ lineHeight: "22px" }}
           >
-            Tu bienestar y confianza
-            <br />
-            son nuestra prioridad
+            Tu bienestar y <br />
+            confianza son <br />
+            nuestra prioridad
           </p>
         </div>
 
         {/* Personal Photo Container */}
-        <div className="flex justify-center px-4 mt-8">
+        <div className="flex justify-center px-4 mt-[21px]">
           <div
-            className="h-[109px] w-full max-w-sm rounded-lg"
+            className="h-[256px] w-full max-w-sm rounded-[7px]"
             style={{
               backgroundImage: "url('/personal-photo.png')",
               backgroundSize: "100%",
@@ -509,72 +500,7 @@ export default async function InicioPage() {
           ></div>
         </div>
         {/* Doctor Information */}
-        <div className="flex justify-center px-4" style={{ marginTop: "9px" }}>
-          <div className="rounded-lg bg-stone-200 px-2.5 pt-8 pb-5 text-xs w-full max-w-sm">
-            <p className="font-light leading-none">
-              Soy médico cirujano, especializado en cirugía plástica estética y
-              reconstructiva. Me formé en la Universidad Nacional de Córdoba y
-              realicé mi residencia en cirugía general y cirugía plástica en el
-              Hospital Cosme Argerich, en Buenos Aires.{" "}
-            </p>
-            <p className="mt-6 font-extrabold leading-loose">
-              Dr. German Miranda Marini{" "}
-            </p>
-            <p className="mt-px text-neutral-600 leading-relaxed">
-              Director Médico de Santë
-            </p>
-          </div>
-        </div>
-
-        {/* Four Paragraphs in Two Columns */}
-        <div className="flex justify-center px-4 mt-8">
-          <div className="w-full max-w-sm grid grid-cols-2 gap-4">
-            {/* Left Column */}
-            <div className="space-y-4">
-              <p
-                className="font-main font-light text-[12px] text-left"
-                style={{ lineHeight: "13px" }}
-              >
-                Desde entonces, nunca dejé de formarme. Creo en la actualización
-                constante como parte esencial del compromiso médico, porque
-                estoy convencido de que la excelencia se sostiene en el
-                aprendizaje continuo.
-              </p>
-              <p
-                className="font-main font-light text-[12px] text-left"
-                style={{ lineHeight: "13px" }}
-              >
-                Hace más de 12 años decidí fundar Santë con una idea clara: que
-                la medicina estética podía ser ética, cercana y profundamente
-                respetuosa. Desde entonces, mi compromiso no ha sido solo con
-                los resultados, sino con las personas que los buscan.
-              </p>
-            </div>
-
-            {/* Right Column */}
-            <div className="space-y-4">
-              <p
-                className="font-main font-light text-[12px] text-left"
-                style={{ lineHeight: "13px" }}
-              >
-                Creo que cada paciente merece ser escuchado antes que
-                intervenido. Por eso, mi trabajo comienza mucho antes del
-                procedimiento: en la mirada, en el diálogo, en la confianza. No
-                creo en las fórmulas ni en los moldes. Creo en acompañar
-                procesos reales, que respeten la identidad de cada quien y
-                prioricen siempre el bienestar.
-              </p>
-              <p
-                className="font-main font-light text-[12px] text-left"
-                style={{ lineHeight: "13px" }}
-              >
-                Ejercer la medicina es, para mí, una responsabilidad y una
-                vocación. Y Santë, el espacio donde esa visión se vuelve
-                práctica, todos los días.
-              </p>
-            </div>
-          </div>
-        </div>
+        <DoctorInfoSection />
 
         {/* Tratamientos Title */}
         <div className="flex justify-center px-4 mt-8">
