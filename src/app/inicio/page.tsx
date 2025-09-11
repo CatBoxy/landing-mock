@@ -503,74 +503,71 @@ export default async function InicioPage() {
         <DoctorInfoSection />
 
         {/* Tratamientos Title */}
-        <div className="flex justify-center px-4 mt-8">
-          <div className="w-[292px] h-[72px] flex items-center justify-center">
-            <h3 className="font-serif font-bold text-[18px] text-center">
+        <div className="flex justify-left px-[20px]">
+          <div className="w-[292px] h-[72px] flex items-center justify-left">
+            <h3 className="font-serif font-bold text-[30px] text-left">
               Tratamientos
             </h3>
           </div>
         </div>
 
         {/* Subtitle with Mixed Weights */}
-        <div className="flex justify-center px-4">
+        <div className="flex justify-left px-[20px]">
           <div className="w-full max-w-sm">
-            <p className="text-center" style={{ lineHeight: "15px" }}>
-              <span className="font-main font-thin text-[14px]">
+            <p className="text-left" style={{ lineHeight: "24px" }}>
+              <span className="font-main font-thin text-[18px]">
                 Cada tratamiento es pensado como <br />
                 parte de una{" "}
               </span>
-              <span className="font-main font-semibold text-[14px]">
-                experiencia integral
+              <span className="font-main font-semibold text-[18px]">
+                experiencia integral, <br />
               </span>
-              <span className="font-main font-thin text-[14px]">
-                , guiada por{" "}
+              <span className="font-main font-thin text-[18px]">
+                guiada por la ciencia, la sensibilidad <br />
               </span>
-              <span className="font-main font-semibold text-[14px]">
-                la <br /> ciencia, la sensibilidad y el respeto
+              <span className="font-main font-semibold text-[18px]">
+                y el respeto por la identidad de cada <br />
               </span>
-              <span className="font-main font-thin text-[14px]">
-                {" "}
-                por la <br /> identidad de cada paciente.
-              </span>
+              <span className="font-main font-thin text-[18px]">paciente.</span>
             </p>
           </div>
         </div>
 
         {/* Tratamiento Cards */}
-        <div className="flex flex-col space-y-4 px-4 mt-8">
+        <div className="flex flex-col space-y-4 px-4 mt-[48px]">
           <TratamientoCard
             title="Cirugía"
             subtitle="Plástica"
-            description="Acompañamos cada cirugía plástica con profesionalismo y un enfoque personalizado para lograr resultados naturales."
+            description="Acompañamos cada cirugía <br /> plástica con profesionalismo y un <br/> enfoque personalizado para lograr <br /> resultados naturales."
           />
           <TratamientoCard
             title="Estética"
             subtitle="Médica"
-            description="La estética médica es un cuidado preciso y consciente que realza la belleza natural sin alterar la esencia."
+            description="La estética médica es un <br /> cuidado preciso y consciente <br /> que realza la belleza natural <br /> sin alterar la esencia."
           />
           <TratamientoCard
             title="Mini"
             subtitle="Invasivos"
-            description="Tratamientos no invasivos, seguros y personalizados para lograr resultados naturales y efectivos."
+            description="Tratamientos no invasivos, <br /> seguros y personalizados para <br /> lograr resultados naturales y <br /> efectivos."
           />
         </div>
       </div>
 
       {/* Por qué elegirnos Section */}
       <div
-        className="md:hidden bg-secondary-bg pb-8 pt-10"
+        className="md:hidden bg-secondary-bg/45 pb-8 pt-10"
         style={{ marginTop: "16px" }}
         id="por-que-elegirnos-section-mobile"
       >
         <div className="flex flex-col items-center space-y-6">
-          <h3 className="font-hero font-bold text-[18px] text-black text-center mb-0">
+          <h3 className="font-hero font-bold text-[30px] text-black text-center mb-[26px]">
             ¿Por qué elegirnos?
           </h3>
           <div className="flex justify-center px-5 w-full max-w-sm">
             <div
-              className="w-full h-64 bg-center bg-no-repeat bg-contain"
+              className="w-full h-[444px] bg-center bg-contain bg-no-repeat"
               style={{
-                backgroundImage: "url('/por-que-elegirnos.png')"
+                backgroundImage: "url('/por-que-elegirnos-mobile.png')"
               }}
             ></div>
           </div>
@@ -578,31 +575,35 @@ export default async function InicioPage() {
       </div>
 
       {/* Actualidad Section */}
-      <div className="md:hidden bg-white py-8" id="actualidad-section-mobile">
+      <div
+        className="md:hidden bg-white py-[36px]"
+        id="actualidad-section-mobile"
+      >
         <div className="flex flex-col items-center space-y-6">
-          <h3 className="font-hero font-bold text-[18px] text-black text-center mb-0">
-            Actualidad
-          </h3>
-          <div className="flex justify-center px-5 w-full max-w-sm">
-            <div className="text-center space-y-4">
-              <p className="font-main font-light text-[12px] text-black leading-[13px]">
-                Entendemos que cada persona es{" "}
-                <span className="font-main font-medium text-[12px] text-black leading-[13px]">
-                  única
-                </span>
-                , y por
-                <br />
-                eso, ofrecemos un enfoque personalizado que se adapta a{" "}
-                <span className="font-main font-medium text-[12px] text-black leading-[13px]">
-                  tus sueños y expectativas
-                </span>
-                .
-              </p>
+          <div className="flex justify-left flex-col w-full max-w-sm px-[20px]">
+            <h3 className="font-hero font-bold text-[30px] text-black text-left mb-[28px]">
+              Actualidad
+            </h3>
+            <div className="flex justify-left w-full max-w-sm">
+              <div className="text-left space-y-4">
+                <p className="font-main font-thin text-[18px] text-black leading-[24px]">
+                  Entendemos que cada persona es <br />
+                  <span className="font-main font-medium text-[18px] text-black leading-[13px]">
+                    única
+                  </span>
+                  , y por eso, ofrecemos un <br />
+                  enfoque personalizado que se adapta <br /> a{" "}
+                  <span className="font-main font-medium text-[18px] text-black leading-[13px]">
+                    tus sueños y expectativas
+                  </span>
+                  .
+                </p>
+              </div>
             </div>
           </div>
 
           {/* Blog Article Cards Grid */}
-          <div className="grid grid-cols-2 gap-4 px-5 w-full max-w-sm mt-6">
+          <div className="grid grid-cols-2 gap-4 w-full max-w-sm">
             {articles.map((article, index) => (
               <BlogArticleCard
                 key={article.id || index}
