@@ -1,5 +1,3 @@
-const API_BASE_URL = "http://72.60.58.137/api";
-
 export interface SigninRequest {
   username: string;
   password: string;
@@ -50,13 +48,16 @@ export class AuthService {
    */
   static async signin(data: SigninRequest): Promise<AuthResponse> {
     try {
-      const response = await fetch(`${API_BASE_URL}/auth/signin`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/signin`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        }
+      );
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
@@ -168,6 +169,7 @@ export class AuthService {
         ...options.headers
       }
     });
+    console.log(response);
 
     // If token is expired or invalid, clear auth data
     if (response.status === 401) {

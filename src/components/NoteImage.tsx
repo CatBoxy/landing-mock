@@ -6,6 +6,7 @@ import { toast } from "sonner";
 
 interface NoteImageProps {
   imageUrl?: string;
+  imageFilename?: string; // Fallback when imageUrl is null
   alt: string;
   className?: string;
   fallback?: React.ReactNode;
@@ -13,6 +14,7 @@ interface NoteImageProps {
 
 export function NoteImage({
   imageUrl,
+  imageFilename,
   alt,
   className = "",
   fallback
@@ -22,7 +24,10 @@ export function NoteImage({
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    if (!imageUrl) {
+    // Use imageUrl if available, otherwise fall back to imageFilename
+    const imageToUse = imageUrl || imageFilename;
+
+    if (!imageToUse) {
       setImageSrc(null);
       setError(false);
       return;
@@ -34,7 +39,7 @@ export function NoteImage({
         setError(false);
 
         // Use the service to normalize the URL (handles all cases)
-        const normalizedImageUrl = NotesService.getImageUrl(imageUrl);
+        const normalizedImageUrl = NotesService.getImageUrl(imageToUse);
         setImageSrc(normalizedImageUrl);
       } catch (err) {
         if (err instanceof NotesError) {
@@ -49,9 +54,9 @@ export function NoteImage({
     };
 
     loadImage();
-  }, [imageUrl]);
+  }, [imageUrl, imageFilename]);
 
-  if (!imageUrl) {
+  if (!imageUrl && !imageFilename) {
     return fallback ? <>{fallback}</> : null;
   }
 

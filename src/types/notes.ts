@@ -1,8 +1,11 @@
 export interface Note {
   id: number;
   title: string;
+  subtitle: string;
+  category: string;
   description: string;
   imageUrl?: string; // Full URL or filename depending on API response
+  imageFilename?: string; // Filename from API response
   createdAt: string;
   updatedAt: string;
   userId: number;
@@ -11,12 +14,16 @@ export interface Note {
 
 export interface CreateNoteRequest {
   title: string;
+  subtitle: string;
+  category: string;
   description: string;
   image?: File;
 }
 
 export interface UpdateNoteRequest {
   title: string;
+  subtitle: string;
+  category: string;
   description: string;
   image?: File;
 }

@@ -159,6 +159,8 @@ export function NotesTable({ className = "" }: NotesTableProps) {
                   <TableRow>
                     <TableHead>ID</TableHead>
                     <TableHead>Título</TableHead>
+                    <TableHead>Subtítulo</TableHead>
+                    <TableHead>Categoría</TableHead>
                     <TableHead>Descripción</TableHead>
                     <TableHead>Usuario</TableHead>
                     <TableHead>Imagen</TableHead>
@@ -176,6 +178,16 @@ export function NotesTable({ className = "" }: NotesTableProps) {
                       <TableCell className="font-medium max-w-xs">
                         <div className="truncate" title={note.title}>
                           {note.title}
+                        </div>
+                      </TableCell>
+                      <TableCell className="font-medium max-w-xs">
+                        <div className="truncate" title={note.subtitle}>
+                          {note.subtitle}
+                        </div>
+                      </TableCell>
+                      <TableCell className="font-medium max-w-xs">
+                        <div className="truncate" title={note.category}>
+                          {note.category}
                         </div>
                       </TableCell>
                       <TableCell className="max-w-md">
@@ -197,7 +209,7 @@ export function NotesTable({ className = "" }: NotesTableProps) {
                         </div>
                       </TableCell>
                       <TableCell>
-                        {note.imageUrl ? (
+                        {note.imageUrl || note.imageFilename ? (
                           <Badge variant="outline" className="text-green-600">
                             <Image className="w-3 h-3 mr-1" />
                             Sí

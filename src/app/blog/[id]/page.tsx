@@ -4,7 +4,6 @@ import {
   getAllNotesWithImages,
   processImageUrl
 } from "@/app/services/server/get";
-import { BlogArticleCard } from "@/components/BlogArticleCard";
 import { ContactoSection } from "@/components/ContactoSection";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -32,116 +31,128 @@ export default async function BlogArticlePage({
   const relatedNotes = allNotes.filter((n) => n.id !== note.id).slice(0, 6);
 
   // Process the main article image
-  const articleImageSrc = note.imageUrl
-    ? processImageUrl(note.imageUrl)
-    : "/hero-bg.png";
+  const articleImageSrc =
+    note.imageUrl || note.imageFilename
+      ? processImageUrl(note.imageUrl || note.imageFilename!)
+      : "/hero-bg.png";
 
   return (
     <PublicLayout>
-      <div className="py-12">
+      <div
+        className="py-12 md:pt-[137px]"
+        style={{ backgroundColor: "#F7EEEB" }}
+      >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Main Article Content */}
+          {/* Top Component - Category, Title, Image */}
+          <div className="mb-12">
+            {/* Category */}
+            <div className="mb-[70px]">
+              <span className="text-gray-600 text-[15px] font-semibold tracking-[3px]">
+                {note.category}
+              </span>
+            </div>
+
+            {/* Title */}
+            <h1 className="text-4xl md:text-[70px] font-hero font-bold italic text-gray-900 mb-[38px]">
+              {note.title}
+            </h1>
+
+            {/* Main Image */}
+            <div className="w-full md:h-[460px] md:w-[708px] relative md:mb-[28px] rounded-lg overflow-hidden">
+              <Image
+                src={articleImageSrc}
+                alt={note.title}
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Two Column Layout Below */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            {/* Left Column - Article Data */}
             <div className="lg:col-span-2">
-              {/* Article Image */}
-              <div className="w-full h-[400px] relative mb-8 rounded-lg overflow-hidden">
-                <Image
-                  src={articleImageSrc}
-                  alt={note.title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
+              {/* Subtitle */}
+              <h2 className="md:text-[30px] font-medium text-black md:mb-[48px]">
+                {note.subtitle}
+              </h2>
 
-              {/* Article Header */}
-              <div className="mb-8">
-                <h1 className="text-4xl font-hero font-bold text-gray-900 mb-4">
-                  {note.title}
-                </h1>
-
-                {/* Article Meta */}
-                <div className="flex items-center text-sm text-gray-500 mb-6">
-                  <span>
-                    Por {note.username || "Dr. German Miranda Marini"}
-                  </span>
-                  <span className="mx-2">•</span>
-                  <span>
-                    {new Date(note.createdAt).toLocaleDateString("es-ES", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric"
-                    })}
-                  </span>
-                </div>
-
-                {/* Category */}
-                <div className="mb-6">
-                  <span className="inline-block bg-gray-100 text-gray-800 text-sm font-medium px-3 py-1 rounded-full">
-                    Actualidad médica
-                  </span>
-                </div>
-              </div>
-
-              {/* Article Content */}
-              <div className="prose prose-lg max-w-none">
-                <div className="text-gray-700 leading-relaxed whitespace-pre-wrap">
+              {/* Description */}
+              <div className="prose prose-lg max-w-none mb-8">
+                <div className="text-gray-700 leading-relaxed whitespace-pre-wrap md:text-black md:text-[20px] md:leading-[32px] md:tracking-[0px] md:font-thin md:max-w-[706px]">
                   {note.description}
                 </div>
               </div>
 
-              {/* Back to Blog */}
-              <div className="mt-12 pt-8 border-t border-gray-200">
-                <Link
-                  href="/blog"
-                  className="inline-flex items-center text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors"
-                >
-                  <svg
-                    className="w-4 h-4 mr-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                    />
-                  </svg>
-                  Volver al Blog
-                </Link>
+              {/* Author */}
+              <div className="flex items-center text-sm text-gray-600 mb-8">
+                <div>
+                  <p className="font-medium text-gray-900">
+                    {note.username || "Dr. German Miranda Marini"}
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* Sidebar */}
+            {/* Right Column - Related Posts */}
             <div className="lg:col-span-1">
-              <div className="sticky top-8">
-                <h3 className="text-xl font-hero font-bold text-gray-900 mb-6">
-                  Artículos Relacionados
-                </h3>
+              <div className="md:sticky md:top-0">
+                {/* Divider Line */}
+                <div className="w-[527px] h-px bg-black mb-6"></div>
 
                 <div className="space-y-6">
                   {relatedNotes.map((relatedNote) => (
-                    <div
+                    <Link
                       key={relatedNote.id}
-                      className="border-b border-gray-200 pb-6 last:border-b-0"
+                      href={`/blog/${relatedNote.id}`}
+                      className="block group hover:opacity-80 transition-opacity"
                     >
-                      <BlogArticleCard
-                        imageSrc={
-                          relatedNote.imageUrl
-                            ? processImageUrl(relatedNote.imageUrl)
-                            : "/hero-bg.png"
-                        }
-                        imageAlt={relatedNote.title}
-                        title={relatedNote.title}
-                        subtitle="Actualidad médica"
-                        text={relatedNote.description.substring(0, 100) + "..."}
-                        author={
-                          relatedNote.username || "Dr. German Miranda Marini"
-                        }
-                        href={`/blog/${relatedNote.id}`}
-                      />
-                    </div>
+                      <div className="flex gap-4">
+                        {/* Left Column - Image */}
+                        <div className="w-[223px] h-[154px] relative flex-shrink-0 rounded-lg overflow-hidden">
+                          <Image
+                            src={
+                              relatedNote.imageUrl || relatedNote.imageFilename
+                                ? processImageUrl(
+                                    relatedNote.imageUrl ||
+                                      relatedNote.imageFilename!
+                                  )
+                                : "/hero-bg.png"
+                            }
+                            alt={relatedNote.title}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+
+                        {/* Right Column - Content */}
+                        <div className="flex-1 min-w-0 flex flex-col justify-center">
+                          {/* Title */}
+                          <div className="max-w-[170px]">
+                            <h4
+                              className="font-bold italic text-[25px] tracking-[0px] text-gray-900 group-hover:text-gray-600 line-clamp-2"
+                              style={{ fontFamily: "Times, serif" }}
+                            >
+                              {relatedNote.title}
+                            </h4>
+                          </div>
+
+                          {/* Subtitle */}
+                          <div className="max-w-[170px]b-2">
+                            <p className="font-main font-semibold text-[20px] tracking-[0px] text-black">
+                              {relatedNote.subtitle || "Actualidad médica"}
+                            </p>
+                          </div>
+
+                          {/* Description Extract */}
+                          <div className="max-w-[170px]">
+                            <p className="font-main font-thin text-[10px] leading-[14px] text-left line-clamp-4">
+                              {relatedNote.description.substring(0, 120)}...
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
                   ))}
                 </div>
 

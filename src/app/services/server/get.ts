@@ -1,8 +1,6 @@
 import jwt from "jsonwebtoken";
 import type { Note } from "@/types/notes";
 
-const API_BASE_URL = "http://72.60.58.137/api";
-
 interface BlogArticleData {
   id?: number;
   imageSrc: string;
@@ -102,7 +100,7 @@ export function processImageUrl(imageUrlOrFilename: string): string {
   }
 
   // If it's just a filename, construct the full URL
-  return `${API_BASE_URL}/notes/image/${imageUrlOrFilename}`;
+  return `${process.env.NEXT_PUBLIC_API_BASE_URL}/notes/image/${imageUrlOrFilename}`;
 }
 
 /**
@@ -111,7 +109,10 @@ export function processImageUrl(imageUrlOrFilename: string): string {
 function noteToArticleData(note: Note): BlogArticleData {
   return {
     id: note.id,
-    imageSrc: note.imageUrl ? processImageUrl(note.imageUrl) : "/hero-bg.png",
+    imageSrc:
+      note.imageUrl || note.imageFilename
+        ? processImageUrl(note.imageUrl || note.imageFilename!)
+        : "/hero-bg.png",
     imageAlt: note.title,
     title: note.title,
     subtitle: "Actualidad médica", // Default subtitle since notes don't have subtitles
@@ -129,7 +130,7 @@ export async function getNotesForHomepage(): Promise<BlogArticleData[]> {
     const token = generateServerJWT();
 
     const response = await fetch(
-      `${API_BASE_URL}/notes/with-images?page=0&size=6`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/notes/with-images?page=0&size=6`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -183,13 +184,16 @@ export async function getNoteById(id: string): Promise<Note | null> {
       return null;
     }
 
-    const response = await fetch(`${API_BASE_URL}/notes/${noteId}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json"
-      },
-      next: { revalidate: 300 } // Cache for 5 minutes
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/notes/${noteId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json"
+        },
+        next: { revalidate: 300 } // Cache for 5 minutes
+      }
+    );
 
     if (!response.ok) {
       console.warn("Failed to fetch note by ID:", response.status);
@@ -215,7 +219,7 @@ export async function getAllNotesWithImages(
     const token = generateServerJWT();
 
     const response = await fetch(
-      `${API_BASE_URL}/notes/with-images?page=0&size=${limit}`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/notes/with-images?page=0&size=${limit}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

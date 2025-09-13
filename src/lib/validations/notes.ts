@@ -5,10 +5,15 @@ export const createNoteSchema = z.object({
     .string()
     .min(1, "El título es requerido")
     .max(200, "El título no puede superar los 200 caracteres"),
-  description: z
+  subtitle: z
     .string()
-    .min(1, "La descripción es requerida")
-    .max(2000, "La descripción no puede superar los 2000 caracteres"),
+    .min(1, "El subtítulo es requerido")
+    .max(200, "El subtítulo no puede superar los 200 caracteres"),
+  category: z
+    .string()
+    .min(1, "La categoría es requerida")
+    .max(200, "La categoría no puede superar los 200 caracteres"),
+  description: z.string().min(1, "La descripción es requerida"),
   image: z
     .instanceof(File)
     .optional()

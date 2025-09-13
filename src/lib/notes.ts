@@ -7,8 +7,6 @@ import type {
   PaginationParams
 } from "@/types/notes";
 
-const API_BASE_URL = "http://72.60.58.137/api";
-
 export class NotesError extends Error {
   constructor(message: string, public status?: number) {
     super(message);
@@ -34,7 +32,7 @@ export class NotesService {
       });
 
       const response = await AuthService.authenticatedFetch(
-        `${API_BASE_URL}/notes?${queryParams}`
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/notes?${queryParams}`
       );
 
       if (!response.ok) {
@@ -68,7 +66,7 @@ export class NotesService {
       });
 
       const response = await AuthService.authenticatedFetch(
-        `${API_BASE_URL}/notes/my?${queryParams}`
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/notes/my?${queryParams}`
       );
 
       if (!response.ok) {
@@ -102,7 +100,7 @@ export class NotesService {
       });
 
       const response = await AuthService.authenticatedFetch(
-        `${API_BASE_URL}/notes/with-images?${queryParams}`
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/notes/with-images?${queryParams}`
       );
 
       if (!response.ok) {
@@ -130,7 +128,7 @@ export class NotesService {
   static async getNoteById(id: number): Promise<Note> {
     try {
       const response = await AuthService.authenticatedFetch(
-        `${API_BASE_URL}/notes/${id}`
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/notes/${id}`
       );
 
       if (!response.ok) {
@@ -163,7 +161,9 @@ export class NotesService {
       // Add note data as JSON
       const noteData = {
         title: data.title,
-        description: data.description
+        description: data.description,
+        subtitle: data.subtitle,
+        category: data.category
       };
 
       const noteBlob = new Blob([JSON.stringify(noteData)], {
@@ -177,14 +177,17 @@ export class NotesService {
       }
 
       const authHeaders = AuthService.getAuthHeader();
-      const response = await fetch(`${API_BASE_URL}/notes`, {
-        method: "POST",
-        headers: {
-          ...authHeaders
-          // Don't set Content-Type, let browser set it for FormData
-        },
-        body: formData
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/notes`,
+        {
+          method: "POST",
+          headers: {
+            ...authHeaders
+            // Don't set Content-Type, let browser set it for FormData
+          },
+          body: formData
+        }
+      );
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
@@ -194,7 +197,8 @@ export class NotesService {
         );
       }
 
-      return await response.json();
+      const result = await response.json();
+      return result;
     } catch (error) {
       if (error instanceof NotesError) {
         throw error;
@@ -213,7 +217,9 @@ export class NotesService {
       // Add note data as JSON
       const noteData = {
         title: data.title,
-        description: data.description
+        description: data.description,
+        subtitle: data.subtitle,
+        category: data.category
       };
 
       const noteBlob = new Blob([JSON.stringify(noteData)], {
@@ -227,14 +233,17 @@ export class NotesService {
       }
 
       const authHeaders = AuthService.getAuthHeader();
-      const response = await fetch(`${API_BASE_URL}/notes/${id}`, {
-        method: "PUT",
-        headers: {
-          ...authHeaders
-          // Don't set Content-Type, let browser set it for FormData
-        },
-        body: formData
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/notes/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            ...authHeaders
+            // Don't set Content-Type, let browser set it for FormData
+          },
+          body: formData
+        }
+      );
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
@@ -244,7 +253,8 @@ export class NotesService {
         );
       }
 
-      return await response.json();
+      const result = await response.json();
+      return result;
     } catch (error) {
       if (error instanceof NotesError) {
         throw error;
@@ -259,7 +269,7 @@ export class NotesService {
   static async deleteNote(id: number): Promise<void> {
     try {
       const response = await AuthService.authenticatedFetch(
-        `${API_BASE_URL}/notes/${id}`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/notes/${id}`,
         {
           method: "DELETE"
         }
@@ -298,7 +308,7 @@ export class NotesService {
     }
 
     // If it's just a filename, construct the full URL
-    return `${API_BASE_URL}/notes/image/${imageUrlOrFilename}`;
+    return `${process.env.NEXT_PUBLIC_API_BASE_URL}/notes/image/${imageUrlOrFilename}`;
   }
 
   /**
@@ -306,7 +316,9 @@ export class NotesService {
    */
   static async getImage(filename: string): Promise<Blob> {
     try {
-      const response = await fetch(`${API_BASE_URL}/notes/image/${filename}`);
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/notes/image/${filename}`
+      );
 
       if (!response.ok) {
         throw new NotesError("Error al cargar la imagen", response.status);

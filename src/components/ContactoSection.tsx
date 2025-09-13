@@ -5,45 +5,45 @@ export function ContactoSection() {
     <div className="bg-tertiary-bg py-8 md:pt-[211px] md:pb-[192px]">
       <div className="px-4 space-y-6 md:max-w-[710px] md:mx-auto">
         {/* Title */}
-        <h3 className="font-serif font-bold text-[18px] md:text-[45px] text-white text-center">
+        <h3 className="font-serif font-bold text-[30px] md:text-[45px] text-white text-center mb-[10px] md:mb-24px">
           Contacto
         </h3>
 
         {/* Subtitle */}
         <div className="text-center space-y-2 md:space-y-0 md:mt-[26px]">
           <p
-            className="font-main font-light text-[12px] md:text-[20px] text-white"
-            style={{ lineHeight: "13px" }}
+            className="font-main font-light text-[16px] md:text-[20px] text-white"
+            style={{ lineHeight: "22px" }}
           >
             ¿Te gustaría saber qué es lo <br className="md:hidden" /> mejor para
             vos?{" "}
-            <span className="font-main font-medium text-[12px] md:text-[20px] text-white md:block md:mt-[26px]">
+            <span className="font-main font-medium text-[16px] md:text-[20px] text-white md:block md:mt-[26px]">
               Escribinos
             </span>
           </p>
         </div>
 
         {/* Form */}
-        <form className="space-y-4 md:space-y-3">
+        <form className="space-y-[12px] md:space-y-3">
           <div>
             <input
               type="text"
               placeholder="Nombre"
-              className="w-full px-4 h-[30px] md:h-[45px] md:w-[710px] rounded-lg border !rounded-[6px] border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-[#A4A2A2]"
+              className="w-full px-4 h-[45px] md:h-[45px] md:w-[710px] rounded-lg border !rounded-[6px] border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-[#A4A2A2]"
             />
           </div>
           <div>
             <input
               type="email"
               placeholder="Email"
-              className="w-full px-4 h-[30px] md:h-[45px] md:w-[710px] rounded-lg border !rounded-[6px] border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-[#A4A2A2]"
+              className="w-full px-4 h-[45px] md:h-[45px] md:w-[710px] rounded-lg border !rounded-[6px] border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-[#A4A2A2]"
             />
           </div>
           <div className="md:mb-6">
             <input
               type="text"
               placeholder="Localidad"
-              className="w-full px-4 h-[30px] md:h-[45px] md:w-[710px] rounded-lg border !rounded-[6px] border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-[#A4A2A2]"
+              className="w-full px-4 h-[45px] md:h-[45px] md:w-[710px] rounded-lg border !rounded-[6px] border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-[#A4A2A2]"
             />
           </div>
 

@@ -235,7 +235,7 @@ export function PublicLayout({ children }: PublicLayoutProps) {
                 className="bg-white text-black rounded-lg text-sm font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 mb-6"
                 style={{ width: "201px", height: "54px" }}
               >
-                <span>¡Solicitá tu consulta!</span>
+                <span>Solicitá tu consulta</span>
                 <Send className="w-4 h-4" />
               </Link>
 
