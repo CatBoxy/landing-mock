@@ -603,7 +603,7 @@ export default async function InicioPage() {
           </div>
 
           {/* Blog Article Cards Grid */}
-          <div className="grid grid-cols-2 gap-4 w-full max-w-sm">
+          <div className="grid grid-cols-2 gap-4 w-full max-w-sm px-[20px]">
             {articles.map((article, index) => (
               <BlogArticleCard
                 key={article.id || index}

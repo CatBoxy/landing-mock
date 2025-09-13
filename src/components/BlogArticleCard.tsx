@@ -46,7 +46,7 @@ export function BlogArticleCard({
         </p>
 
         {/* Text */}
-        <p className="font-main font-thin text-[16px] text-black leading-[22px] md:text-left md:text-[15px]">
+        <p className="font-main font-thin text-[16px] text-black leading-[22px] md:text-left md:text-[15px] line-clamp-4">
           {text}
         </p>
 
