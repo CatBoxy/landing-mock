@@ -4,7 +4,7 @@ import {
   getAllNotesWithImages,
   processImageUrl
 } from "@/app/services/server/get";
-import { ContactoSection } from "@/components/ContactoSection";
+import { ContactoSectionWrapper } from "@/components/ContactoSectionWrapper";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -265,7 +265,7 @@ export default async function BlogArticlePage({
 
       {/* Contacto Section */}
       <div id="contacto-section">
-        <ContactoSection />
+        <ContactoSectionWrapper />
       </div>
     </PublicLayout>
   );

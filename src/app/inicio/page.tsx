@@ -2,7 +2,7 @@ import { PublicLayout } from "@/components/layout/PublicLayout";
 import Link from "next/link";
 import { TratamientoCard } from "@/components/TratamientoCard";
 import { BlogArticleCard } from "@/components/BlogArticleCard";
-import { ContactoSection } from "@/components/ContactoSection";
+import { ContactoSectionWrapper } from "@/components/ContactoSectionWrapper";
 import { DoctorInfoSection } from "@/components/DoctorInfoSection";
 import { ChevronDown } from "lucide-react";
 import { getNotesForHomepage } from "@/app/services/server/get";
@@ -438,7 +438,7 @@ export default async function InicioPage() {
 
       {/* Desktop Contacto Section */}
       <div id="contacto-section" className="hidden md:block">
-        <ContactoSection />
+        <ContactoSectionWrapper />
       </div>
 
       {/* Mobile Only Text Section */}
@@ -622,7 +622,7 @@ export default async function InicioPage() {
 
       {/* Mobile Contacto Section */}
       <div className="md:hidden" id="contacto-section-mobile">
-        <ContactoSection />
+        <ContactoSectionWrapper />
       </div>
     </PublicLayout>
   );

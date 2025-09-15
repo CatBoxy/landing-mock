@@ -1,5 +1,5 @@
 import { PublicLayout } from "@/components/layout/PublicLayout";
-import { ContactoSection } from "@/components/ContactoSection";
+import { ContactoSectionWrapper } from "@/components/ContactoSectionWrapper";
 import { DropdownContainer } from "@/components/DropdownContainer";
 import { treatments } from "@/lib/tratamientos";
 
@@ -76,7 +76,7 @@ export default function TratamientosPage() {
         </div>
       </div>
       {/* Contacto Section */}
-      <ContactoSection />
+      <ContactoSectionWrapper />
     </PublicLayout>
   );
 }

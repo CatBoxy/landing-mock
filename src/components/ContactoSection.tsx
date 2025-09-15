@@ -1,6 +1,87 @@
-import { Mail } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import { Mail, RefreshCw } from "lucide-react";
+import { toast } from "sonner";
+import { useCaptcha } from "@/hooks/useCaptcha";
+import { submitContactForm } from "@/app/actions/contact";
 
 export function ContactoSection() {
+  const [formData, setFormData] = useState({
+    nombre: "",
+    email: "",
+    localidad: "",
+    mensaje: ""
+  });
+  const [captchaInput, setCaptchaInput] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showCaptcha, setShowCaptcha] = useState(false);
+
+  const { captchaState, generateCaptcha, refreshCaptcha } = useCaptcha();
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleFirstSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!showCaptcha) {
+      // First submit - show captcha
+      setShowCaptcha(true);
+      await generateCaptcha();
+      return;
+    }
+  };
+
+  const handleCaptchaSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!captchaState.token || !captchaInput.trim()) {
+      toast.error("Por favor, ingresa el código del captcha");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const result = await submitContactForm({
+        ...formData,
+        captchaToken: captchaState.token,
+        captchaInput: captchaInput.trim()
+      });
+
+      if (result.success) {
+        toast.success(result.message);
+        // Reset form
+        setFormData({ nombre: "", email: "", localidad: "", mensaje: "" });
+        setCaptchaInput("");
+        setShowCaptcha(false);
+      } else {
+        toast.error(result.message);
+        // Refresh captcha on error
+        await generateCaptcha();
+        setCaptchaInput("");
+      }
+    } catch {
+      toast.error(
+        "Error al enviar el formulario. Por favor, inténtalo de nuevo."
+      );
+      await generateCaptcha();
+      setCaptchaInput("");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleRefreshCaptcha = async () => {
+    await refreshCaptcha();
+    setCaptchaInput("");
+  };
   return (
     <div className="bg-tertiary-bg py-8 md:pt-[211px] md:pb-[192px]">
       <div className="px-4 space-y-6 md:max-w-[710px] md:mx-auto">
@@ -24,36 +105,115 @@ export function ContactoSection() {
         </div>
 
         {/* Form */}
-        <form className="space-y-[12px] md:space-y-3">
+        <form
+          onSubmit={showCaptcha ? handleCaptchaSubmit : handleFirstSubmit}
+          className="space-y-[12px] md:space-y-3"
+        >
           <div>
             <input
               type="text"
+              name="nombre"
               placeholder="Nombre"
+              value={formData.nombre}
+              onChange={handleInputChange}
+              required
               className="w-full px-4 h-[45px] md:h-[45px] md:w-[710px] rounded-lg border !rounded-[6px] border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-[#A4A2A2]"
             />
           </div>
           <div>
             <input
               type="email"
+              name="email"
               placeholder="Email"
+              value={formData.email}
+              onChange={handleInputChange}
+              required
               className="w-full px-4 h-[45px] md:h-[45px] md:w-[710px] rounded-lg border !rounded-[6px] border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-[#A4A2A2]"
             />
           </div>
-          <div className="md:mb-6">
+          <div>
             <input
               type="text"
+              name="localidad"
               placeholder="Localidad"
+              value={formData.localidad}
+              onChange={handleInputChange}
+              required
               className="w-full px-4 h-[45px] md:h-[45px] md:w-[710px] rounded-lg border !rounded-[6px] border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-[#A4A2A2]"
             />
           </div>
+          <div>
+            <textarea
+              name="mensaje"
+              placeholder="Mensaje"
+              rows={4}
+              value={formData.mensaje}
+              onChange={handleInputChange}
+              required
+              className="w-full px-4 py-3 md:w-[710px] rounded-lg border !rounded-[6px] border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-[#A4A2A2] resize-none"
+            />
+          </div>
+
+          {/* Captcha Section */}
+          {showCaptcha && (
+            <div className="space-y-3 md:mb-6">
+              <div className="flex items-center space-x-3">
+                <div className="flex-1">
+                  {captchaState.imageUrl ? (
+                    <Image
+                      src={
+                        captchaState.imageUrl.startsWith(
+                          "/captcha/image/mock-token"
+                        )
+                          ? "/hero-bg.png" // Use existing image as mock captcha
+                          : `${process.env.NEXT_PUBLIC_API_CAPTCHA_URL}${captchaState.imageUrl}`
+                      }
+                      alt="Captcha"
+                      width={200}
+                      height={60}
+                      className="w-full h-[60px] md:w-[200px] md:h-[60px] border border-gray-300 rounded-lg bg-white"
+                    />
+                  ) : (
+                    <div className="w-full h-[60px] md:w-[200px] md:h-[60px] border border-gray-300 rounded-lg bg-white flex items-center justify-center text-gray-500">
+                      {captchaState.isLoading
+                        ? "Cargando captcha..."
+                        : "No hay imagen"}
+                    </div>
+                  )}
+                </div>
+                <button
+                  type="button"
+                  onClick={handleRefreshCaptcha}
+                  disabled={captchaState.isLoading}
+                  className="p-2 bg-white rounded-lg border border-gray-300 hover:bg-gray-50 disabled:opacity-50"
+                >
+                  <RefreshCw
+                    className={`w-4 h-4 text-gray-600 ${
+                      captchaState.isLoading ? "animate-spin" : ""
+                    }`}
+                  />
+                </button>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Ingresa el código del captcha"
+                  value={captchaInput}
+                  onChange={(e) => setCaptchaInput(e.target.value)}
+                  className="w-full px-4 h-[45px] md:h-[45px] md:w-[710px] rounded-lg border !rounded-[6px] border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-[#A4A2A2]"
+                />
+              </div>
+            </div>
+          )}
 
           {/* Mobile Buttons - Side by side */}
           <div className="flex space-x-4 pt-4 md:hidden">
             <button
               type="submit"
-              className="flex-1 bg-black text-white px-6 py-3 rounded-lg font-main font-medium flex items-center justify-center space-x-2"
+              disabled={(showCaptcha && !captchaInput.trim()) || isSubmitting}
+              className="flex-1 bg-black text-white px-6 py-3 rounded-lg font-main font-medium flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <span>Enviar</span>
+              <span>{isSubmitting ? "Enviando..." : "Enviar"}</span>
               <Mail className="w-4 h-4" />
             </button>
             <button
@@ -72,9 +232,10 @@ export function ContactoSection() {
             {/* Enviar Button */}
             <button
               type="submit"
-              className="w-[208px] h-[55px] bg-black text-white rounded-lg font-main font-medium flex items-center justify-center space-x-2"
+              disabled={(showCaptcha && !captchaInput.trim()) || isSubmitting}
+              className="w-[208px] h-[55px] bg-black text-white rounded-lg font-main font-medium flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <span>Enviar</span>
+              <span>{isSubmitting ? "Enviando..." : "Enviar"}</span>
               <Mail className="w-4 h-4" />
             </button>
 
