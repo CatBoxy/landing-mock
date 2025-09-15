@@ -127,13 +127,10 @@ function noteToArticleData(note: Note): BlogArticleData {
  */
 export async function getNotesForHomepage(): Promise<BlogArticleData[]> {
   try {
-    const token = generateServerJWT();
-
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/notes/with-images?page=0&size=6`,
       {
         headers: {
-          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json"
         },
         next: { revalidate: 300 } // Cache for 5 minutes
@@ -216,13 +213,10 @@ export async function getAllNotesWithImages(
   limit: number = 10
 ): Promise<Note[]> {
   try {
-    const token = generateServerJWT();
-
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/notes/with-images?page=0&size=${limit}`,
       {
         headers: {
-          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json"
         },
         next: { revalidate: 300 } // Cache for 5 minutes
