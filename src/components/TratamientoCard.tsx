@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 interface TratamientoCardProps {
   title: string;
   subtitle: string;
@@ -36,9 +38,11 @@ export function TratamientoCard({
 
       {/* Third Section - Button */}
       <div className="flex-1 flex justify-center items-center">
-        <button className="w-[162px] h-[45px] bg-white rounded text-black font-main font-bold text-[14px]">
-          Ver más
-        </button>
+        <Link href="/tratamientos">
+          <button className="w-[162px] h-[45px] bg-white rounded text-black font-main font-bold text-[14px] hover:bg-gray-100 transition-colors">
+            Ver más
+          </button>
+        </Link>
       </div>
     </div>
   );
