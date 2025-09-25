@@ -30,7 +30,7 @@ export function TratamientoCard({
       {/* Second Section - Description */}
       <div className="flex-1 flex items-center">
         <p
-          className="font-main font-thin text-[16px] text-white text-left"
+          className="font-main font-regular text-[16px] text-white text-left"
           style={{ lineHeight: "22px" }}
           dangerouslySetInnerHTML={{ __html: description }}
         />

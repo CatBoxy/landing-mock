@@ -18,8 +18,8 @@ export function PublicLayout({ children }: PublicLayoutProps) {
 
   return (
     <div className="min-h-screen bg-main-bg font-main font-weight-main">
-      {/* Header */}
-      <header className="bg-main-bg shadow-sm">
+      {/* Sticky Header */}
+      <header className="fixed top-0 left-0 right-0 bg-main-bg shadow-sm z-50">
         <nav className="relative">
           {/* Desktop Header Content */}
           <div className="hidden md:block relative h-[162px] flex items-center">
@@ -70,6 +70,10 @@ export function PublicLayout({ children }: PublicLayoutProps) {
         </nav>
       </header>
 
+      {/* Invisible placeholder to maintain layout */}
+      <div className="hidden md:block h-[162px]"></div>
+      <div className="md:hidden h-16"></div>
+
       {/* Main content */}
       <main className="flex-1">{children}</main>
 
@@ -80,7 +84,9 @@ export function PublicLayout({ children }: PublicLayoutProps) {
           <div className="pt-[43px] pb-8">
             <div className="flex flex-col items-center">
               {/* Logo */}
-              <img src="/logo-blanco.png" alt="Logo" className="h-6 w-auto" />
+              <Link href="/inicio">
+                <img src="/logo-blanco.png" alt="Logo" className="h-6 w-auto" />
+              </Link>
 
               {/* Navigation items */}
               <div className="flex flex-col items-center mt-[28px]">
@@ -122,17 +128,21 @@ export function PublicLayout({ children }: PublicLayoutProps) {
               </div>
 
               {/* Button */}
-              <Link
-                href="/contacto"
+              <a
+                href="https://wa.me/542644390203"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-white text-black px-6 py-3 rounded-lg text-sm font-semibold hover:bg-gray-100 transition-colors mt-[28px]"
               >
                 ¡Solicitá tu consulta!
-              </Link>
+              </a>
 
               {/* Social Media Icons */}
               <div className="flex space-x-6 mt-[28px]">
                 <a
-                  href="tel:+1234567890"
+                  href="https://wa.me/542644390203"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   <svg
@@ -181,11 +191,13 @@ export function PublicLayout({ children }: PublicLayoutProps) {
           <div className="relative h-[492px] pt-[101px]">
             {/* Logo Column */}
             <div className="absolute left-[437px] top-[101px]">
-              <img
-                src="/logo-blanco.png"
-                alt="Logo"
-                className="w-[121px] h-[40px]"
-              />
+              <Link href="/inicio">
+                <img
+                  src="/logo-blanco.png"
+                  alt="Logo"
+                  className="w-[121px] h-[40px]"
+                />
+              </Link>
             </div>
 
             {/* Navigation Column */}
@@ -230,19 +242,23 @@ export function PublicLayout({ children }: PublicLayoutProps) {
             {/* Social Links Column */}
             <div className="absolute right-[437px] top-[101px] flex flex-col items-end">
               {/* Button */}
-              <Link
-                href="/contacto"
+              <a
+                href="https://wa.me/542644390203"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-white text-black rounded-lg text-sm font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 mb-6"
                 style={{ width: "201px", height: "54px" }}
               >
                 <span>Solicitá tu consulta</span>
                 <Send className="w-4 h-4" />
-              </Link>
+              </a>
 
               {/* Social Icons */}
               <div className="flex justify-between" style={{ width: "200px" }}>
                 <a
-                  href="tel:+1234567890"
+                  href="https://wa.me/542644390203"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   <svg
@@ -254,7 +270,7 @@ export function PublicLayout({ children }: PublicLayoutProps) {
                   </svg>
                 </a>
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/centrosantesj?igsh=OHMzNmYxdnpkaWtx&utm_source=qr"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-300 hover:text-white transition-colors"

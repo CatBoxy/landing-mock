@@ -58,8 +58,10 @@ export default async function InicioPage() {
 
                 {/* Desktop Buttons */}
                 <div className="flex flex-row space-x-5 items-center justify-center mt-[52px]">
-                  <Link
-                    href="/contacto"
+                  <a
+                    href="https://wa.me/542644390203"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="bg-black text-white w-[223px] h-[66px] rounded-lg font-medium flex items-center justify-center space-x-2 hover:bg-gray-800 transition-colors"
                   >
                     <span>Reservá tu turno</span>
@@ -70,7 +72,7 @@ export default async function InicioPage() {
                     >
                       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
                     </svg>
-                  </Link>
+                  </a>
                   <a
                     href="#tratamientos-section"
                     className="border border-white text-white w-[223px] h-[66px] rounded-lg font-medium flex items-center justify-center space-x-2 hover:bg-white hover:text-black transition-colors"
@@ -132,13 +134,15 @@ export default async function InicioPage() {
         {/* Mobile Buttons - Positioned over hero image */}
         <div className="md:hidden absolute bottom-[70px] left-[20px] flex flex-row items-center">
           {/* Button: Black background, "Reservá tu turno" without icon */}
-          <Link
-            href="/contacto"
+          <a
+            href="https://wa.me/542644390203"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-black text-white font-bold flex items-center justify-center hover:bg-gray-800 transition-colors"
             style={{ width: "162px", height: "45px", borderRadius: "7px" }}
           >
             <span className="text-[14px]">Reservá tu turno</span>
-          </Link>
+          </a>
         </div>
       </div>
 
@@ -153,7 +157,7 @@ export default async function InicioPage() {
           <div
             className="h-[560px] rounded-lg bg-cover bg-center"
             style={{
-              backgroundImage: "url('/hero-bg.png')"
+              backgroundImage: "url('/doctor-min.png')"
             }}
           ></div>
 
@@ -196,12 +200,17 @@ export default async function InicioPage() {
             </div>
 
             {/* CTA Button */}
-            <button className="mt-6 bg-black text-white w-[202px] h-[54px] rounded-lg font-medium flex items-center justify-center space-x-2 hover:bg-gray-800 transition-colors">
+            <a
+              href="https://wa.me/542644390203"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 bg-black text-white w-[202px] h-[54px] rounded-lg font-medium flex items-center justify-center space-x-2 hover:bg-gray-800 transition-colors"
+            >
               <span>Reservá tu turno</span>
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
               </svg>
-            </button>
+            </a>
           </div>
         </div>
 
@@ -256,18 +265,18 @@ export default async function InicioPage() {
       {/* Desktop Tratamientos Section */}
       <div
         id="tratamientos-section"
-        className="hidden md:flex items-center flex-col mt-[223px] mb-[93px] text-center"
+        className="hidden md:flex items-center flex-col mt-[135px] mb-[93px] text-center"
       >
         <h2
           className="font-serif font-bold text-[45px] text-black"
-          style={{ letterSpacing: "0px" }}
+          style={{ letterSpacing: "0px", lineHeight: "30px" }}
         >
           Tratamientos
         </h2>
 
         {/* Subtitle */}
         <p
-          className="font-sf-pro font-thin text-[20px] text-black max-w-4xl mx-auto mt-[117px]"
+          className="font-sf-pro font-thin text-[20px] text-black max-w-4xl mx-auto mt-[105px]"
           style={{
             lineHeight: "30px",
             letterSpacing: "0px"
@@ -302,8 +311,8 @@ export default async function InicioPage() {
               Plástica
             </h4>
             <p
-              className="font-main font-thin text-[16px] text-white text-center max-w-xs mb-4"
-              style={{ lineHeight: "16px" }}
+              className="font-main font-regular text-[16px] text-white text-center max-w-xs mb-6"
+              style={{ lineHeight: "20px" }}
             >
               Acompañamos cada cirugía <br /> plástica con profesionalismo y{" "}
               <br /> un enfoque personalizado para <br /> lograr resultados
@@ -311,7 +320,7 @@ export default async function InicioPage() {
             </p>
             <Link
               href="/tratamientos"
-              className="w-[157px] h-[50px] bg-white rounded text-black font-main font-semibold text-[12px] flex items-center justify-center hover:bg-gray-100 transition-colors"
+              className="w-[221px] h-[50px] bg-white rounded-[10px] text-black font-main font-semibold text-[15px] flex items-center justify-center hover:bg-gray-100 transition-colors"
             >
               Ver más
             </Link>
@@ -331,7 +340,7 @@ export default async function InicioPage() {
               Médica
             </h4>
             <p
-              className="font-main font-thin text-[16px] text-white text-center max-w-xs mb-4"
+              className="font-main font-regular text-[16px] text-white text-center max-w-xs mb-6"
               style={{ lineHeight: "20px" }}
             >
               La estética médica es un <br /> cuidado preciso y consciente{" "}
@@ -340,7 +349,7 @@ export default async function InicioPage() {
             </p>
             <Link
               href="/tratamientos"
-              className="w-[157px] h-[50px] bg-white rounded text-black font-main font-semibold text-[12px] flex items-center justify-center hover:bg-gray-100 transition-colors"
+              className="w-[221px] h-[50px] bg-white rounded-[10px] text-black font-main font-semibold text-[15px] flex items-center justify-center hover:bg-gray-100 transition-colors"
             >
               Ver más
             </Link>
@@ -360,7 +369,7 @@ export default async function InicioPage() {
               Invasivos
             </h4>
             <p
-              className="font-main font-thin text-[16px] text-white text-center max-w-xs mb-4"
+              className="font-main font-regular text-[16px] text-white text-center max-w-xs mb-6"
               style={{ lineHeight: "20px" }}
             >
               Tratamientos no invasivos, <br /> seguros y personalizados <br />{" "}
@@ -369,7 +378,7 @@ export default async function InicioPage() {
             </p>
             <Link
               href="/tratamientos"
-              className="w-[157px] h-[50px] bg-white rounded text-black font-main font-semibold text-[12px] flex items-center justify-center hover:bg-gray-100 transition-colors"
+              className="w-[221px] h-[50px] bg-white rounded-[10px] text-black font-main font-semibold text-[15px] flex items-center justify-center hover:bg-gray-100 transition-colors"
             >
               Ver más
             </Link>
@@ -419,7 +428,7 @@ export default async function InicioPage() {
           </p>
 
           {/* Blog Article Cards Grid */}
-          <div className="mt-[116px] grid grid-cols-3 gap-x-[20px] max-w-[1075px] mx-auto">
+          <div className="mt-[116px] mb-[124px] grid grid-cols-3 gap-x-[20px] max-w-[1075px] mx-auto">
             {articles.map((article, index) => (
               <BlogArticleCard
                 key={article.id || index}
@@ -479,7 +488,7 @@ export default async function InicioPage() {
         <div className="flex items-center justify-left px-4">
           <p
             className="text-black font-serif font-bold italic text-[30px] text-left pt-[14px]"
-            style={{ lineHeight: "22px" }}
+            style={{ lineHeight: "31px" }}
           >
             Tu bienestar y <br />
             confianza son <br />
@@ -490,11 +499,11 @@ export default async function InicioPage() {
         {/* Personal Photo Container */}
         <div className="flex justify-center px-4 mt-[21px]">
           <div
-            className="h-[256px] w-full max-w-sm rounded-[7px]"
+            className="h-[256px] w-full max-w-sm rounded-[7px] overflow-hidden"
             style={{
-              backgroundImage: "url('/personal-photo.png')",
-              backgroundSize: "100%",
-              backgroundPosition: "center -43px",
+              backgroundImage: "url('/doctor-min.png')",
+              backgroundSize: "135%",
+              backgroundPosition: "center",
               backgroundRepeat: "no-repeat"
             }}
           ></div>
@@ -515,20 +524,22 @@ export default async function InicioPage() {
         <div className="flex justify-left px-[20px]">
           <div className="w-full max-w-sm">
             <p className="text-left" style={{ lineHeight: "24px" }}>
-              <span className="font-main font-thin text-[18px]">
+              <span className="font-main font-light text-[18px]">
                 Cada tratamiento es pensado como <br />
                 parte de una{" "}
               </span>
               <span className="font-main font-semibold text-[18px]">
                 experiencia integral, <br />
               </span>
-              <span className="font-main font-thin text-[18px]">
+              <span className="font-main font-light text-[18px]">
                 guiada por la ciencia, la sensibilidad <br />
               </span>
               <span className="font-main font-semibold text-[18px]">
                 y el respeto por la identidad de cada <br />
               </span>
-              <span className="font-main font-thin text-[18px]">paciente.</span>
+              <span className="font-main font-light text-[18px]">
+                paciente.
+              </span>
             </p>
           </div>
         </div>
@@ -586,7 +597,7 @@ export default async function InicioPage() {
             </h3>
             <div className="flex justify-left w-full max-w-sm">
               <div className="text-left space-y-4">
-                <p className="font-main font-thin text-[18px] text-black leading-[24px]">
+                <p className="font-main font-light text-[18px] text-black leading-[24px]">
                   Entendemos que cada persona es <br />
                   <span className="font-main font-medium text-[18px] text-black leading-[13px]">
                     única

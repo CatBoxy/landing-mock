@@ -10,23 +10,22 @@ export default function TratamientosPage() {
         {/* Mobile Layout */}
         <div>
           {/* Main Title */}
-          <div className="flex items-center justify-center h-16">
-            <h1 className="font-hero font-bold text-[18px] text-black text-center">
+          <div className="flex items-center justify-left px-[20px] mb-[32px]">
+            <h1 className="font-hero font-bold text-[30px] text-black text-center">
               Tratamientos
             </h1>
           </div>
 
           {/* Subtitle */}
-          <div className="px-4 max-w-md mx-auto space-y-4">
-            <p className="font-main font-thin text-[12px] text-black leading-[13px] text-center">
-              No trabajamos para cambiar cuerpos, sino para acompañar procesos.
+          <div className="px-4 max-w-md mx-auto space-y-4 text-left px-[20px]">
+            <p className="font-main text-[18px] text-left text-black leading-[24px] text-center">
+              No trabajamos para cambiar cuerpos, <br />
+              sino para acompañar procesos.
             </p>
-            <p className="font-main font-thin text-[12px] text-black leading-[13px] text-center">
-              Buscamos{" "}
-              <span className="font-main font-semibold text-[12px] text-black leading-[13px]">
-                armonía, naturalidad y resultados sostenibles
-              </span>
-              , sin exageraciones.
+            <p className="font-main text-left text-[18px] text-black leading-[24px] text-center">
+              Buscamos armonía, naturalidad y <br />
+              resultados sostenibles, sin <br />
+              exageraciones.
             </p>
           </div>
 
@@ -40,7 +39,7 @@ export default function TratamientosPage() {
       {/* Desktop Layout */}
       <div className="bg-main-bg pb-[145px] hidden md:block">
         <div>
-          <div className="max-w-6xl mx-auto px-8 pt-16">
+          <div className="max-w-[1440px] mx-auto px-8 pt-16">
             {/* Title Row */}
             <div className="text-left mb-12">
               <h1 className="font-hero font-bold text-[45px] text-black">

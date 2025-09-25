@@ -9,6 +9,7 @@ interface DropdownProps {
   level: number;
   isActive: boolean;
   onToggle: () => void;
+  rootWidth?: string;
 }
 
 const levelStyles = {
@@ -32,7 +33,8 @@ export function Dropdown({
   children,
   level,
   isActive,
-  onToggle
+  onToggle,
+  rootWidth
 }: DropdownProps) {
   const styles =
     levelStyles[level as keyof typeof levelStyles] || levelStyles[0];
@@ -43,7 +45,7 @@ export function Dropdown({
     const [firstDescription, ...remaining] = description;
 
     return (
-      <div className="space-y-3">
+      <div className="space-y-3 pt-[10px]">
         <p className="font-main font-light text-sm text-black leading-relaxed">
           {firstDescription}
         </p>
@@ -61,7 +63,7 @@ export function Dropdown({
             ))}
           </ul>
         ) : remaining.length === 1 ? (
-          <p className="font-main font-light text-sm text-gray-600 italic leading-relaxed">
+          <p className="font-main font-light text-sm text-[#78815C] italic leading-relaxed">
             {remaining[0]}
           </p>
         ) : null}
@@ -73,16 +75,19 @@ export function Dropdown({
   const hasChildren = children && React.Children.count(children) > 0;
 
   return (
-    <div className="w-full">
+    <div
+      className="w-full"
+      style={rootWidth ? { width: rootWidth } : undefined}
+    >
       {/* Dropdown Header */}
       <button
         onClick={onToggle}
-        className={`w-full px-4 py-3 text-left transition-colors duration-200 rounded ${
+        className={`w-full px-4 py-3 text-left transition-colors duration-200 sm:rounded-[10px] rounded-[7px] ${
           isActive ? styles.active : styles.default
         } shadow-[2px_2px_4px_rgba(0,0,0,0.1)]`}
       >
         <div className="flex items-center justify-between">
-          <span className="font-main font-medium text-sm md:text-[20px] text-black">
+          <span className="font-main font-medium text-[14px] md:text-[20px] text-black">
             {title}
           </span>
           {(hasContent || hasChildren) && (
@@ -97,7 +102,7 @@ export function Dropdown({
 
       {/* Dropdown Content */}
       {isActive && (
-        <div className="bg-white px-4 py-3">
+        <div className="bg-white">
           {hasContent && renderDescription()}
           {hasChildren && <div className="mt-3 space-y-2">{children}</div>}
         </div>

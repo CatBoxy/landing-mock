@@ -100,7 +100,7 @@ export default async function BlogArticlePage({
               <div className="lg:col-span-1">
                 <div className="md:sticky md:top-0">
                   {/* Divider Line */}
-                  <div className="w-[527px] h-px bg-black mb-6"></div>
+                  <div className="w-[527px] h-px bg-black mb-[49px]"></div>
 
                   <div className="space-y-6">
                     {relatedNotes.map((relatedNote) => (
@@ -149,7 +149,7 @@ export default async function BlogArticlePage({
 
                             {/* Description Extract */}
                             <div className="max-w-[170px]">
-                              <p className="font-main font-thin text-[10px] leading-[14px] text-left line-clamp-4">
+                              <p className="font-main font-light text-[12px] leading-[14px] text-left line-clamp-4">
                                 {relatedNote.description.substring(0, 120)}...
                               </p>
                             </div>
@@ -192,13 +192,13 @@ export default async function BlogArticlePage({
               </div>
 
               {/* Subtitle */}
-              <h2 className="text-lg font-medium text-black mb-[10px]">
+              <h2 className="text-[16px] font-medium text-black mb-[10px]">
                 {note.subtitle}
               </h2>
 
               {/* Description */}
               <div className="prose prose-sm max-w-none">
-                <div className="text-black whitespace-pre-wrap text-left font-thin text-[16px] leading-[22px]">
+                <div className="text-black whitespace-pre-wrap text-left text-[16px] leading-[22px]">
                   {note.description}
                 </div>
               </div>
@@ -221,9 +221,9 @@ export default async function BlogArticlePage({
                       href={`/blog/${relatedNote.id}`}
                       className="block group hover:opacity-80 transition-opacity"
                     >
-                      <div className="space-y-2">
+                      <div>
                         {/* Image */}
-                        <div className="w-full h-32 relative rounded-lg overflow-hidden">
+                        <div className="w-full h-[98px] relative rounded-lg overflow-hidden">
                           <Image
                             src={
                               relatedNote.imageUrl || relatedNote.imageFilename
@@ -245,12 +245,12 @@ export default async function BlogArticlePage({
                         </h4>
 
                         {/* Subtitle */}
-                        <p className="text-[16px] font-main font-regular text-black">
+                        <p className="text-[16px] font-main font-regular text-black mb-[16px]">
                           {relatedNote.subtitle || "Actualidad médica"}
                         </p>
 
                         {/* Description */}
-                        <p className="text-[16px] font-main font-thin text-black line-clamp-4">
+                        <p className="text-[16px] font-main font-light text-black line-clamp-4">
                           {relatedNote.description.substring(0, 100)}...
                         </p>
                       </div>
