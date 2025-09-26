@@ -7,9 +7,44 @@ import { ContactoSectionWrapper } from "@/components/ContactoSectionWrapper";
 import { DoctorInfoSection } from "@/components/DoctorInfoSection";
 import { ChevronDown } from "lucide-react";
 import { getNotesForHomepage } from "@/app/services/server/get";
+import type { Metadata } from "next";
 
 // Force dynamic rendering for this page since it fetches fresh data
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Inicio - Cirugía Plástica y Medicina Estética",
+  description:
+    "Descubre Sante, la clínica de cirugía plástica y medicina estética del Dr. German Miranda Marini. Tratamientos personalizados, atención humana y resultados naturales en Argentina.",
+  keywords: [
+    "cirugía plástica Argentina",
+    "medicina estética Argentina",
+    "Dr. German Miranda Marini",
+    "clínica estética",
+    "tratamientos estéticos personalizados",
+    "cirugía reconstructiva",
+    "medicina estética ética",
+    "Santë clínica"
+  ],
+  openGraph: {
+    title:
+      "Sante - Cirugía Plástica y Medicina Estética | Dr. German Miranda Marini",
+    description:
+      "Descubre Sante, la clínica de cirugía plástica y medicina estética del Dr. German Miranda Marini. Tratamientos personalizados y atención humana.",
+    url: "https://centrosante.com.ar/inicio",
+    images: [
+      {
+        url: "https://centrosante.com.ar/hero-bg.webp",
+        width: 1200,
+        height: 630,
+        alt: "Sante Cirugía Plástica y Medicina Estética - Dr. German Miranda Marini"
+      }
+    ]
+  },
+  alternates: {
+    canonical: "https://centrosante.com.ar/inicio"
+  }
+};
 
 export default async function InicioPage() {
   // Fetch articles data on the server side
