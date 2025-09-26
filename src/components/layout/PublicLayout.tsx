@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { Send } from "lucide-react";
 import Link from "next/link";
 import { MobileMenu } from "@/components/MobileMenu";
@@ -26,9 +27,12 @@ export function PublicLayout({ children }: PublicLayoutProps) {
             {/* Logo */}
             <div className="absolute left-[245px] flex items-center h-full">
               <Link href="/inicio" className="flex items-center">
-                <img
+                <Image
                   src="/logo.png"
                   alt="Logo"
+                  width={136}
+                  height={44}
+                  priority
                   className="w-[136px] h-[44px]"
                 />
               </Link>
@@ -59,7 +63,14 @@ export function PublicLayout({ children }: PublicLayoutProps) {
               {/* Logo */}
               <div className="flex-shrink-0">
                 <Link href="/inicio" className="flex items-center">
-                  <img src="/logo.png" alt="Logo" className="h-6 w-auto" />
+                  <Image
+                    src="/logo.webp"
+                    alt="Logo"
+                    width={136}
+                    height={44}
+                    priority
+                    className="h-6 w-auto"
+                  />
                 </Link>
               </div>
 
@@ -85,7 +96,13 @@ export function PublicLayout({ children }: PublicLayoutProps) {
             <div className="flex flex-col items-center">
               {/* Logo */}
               <Link href="/inicio">
-                <img src="/logo-blanco.png" alt="Logo" className="h-6 w-auto" />
+                <Image
+                  src="/logo-blanco.webp"
+                  alt="Logo"
+                  width={121}
+                  height={40}
+                  className="h-6 w-auto"
+                />
               </Link>
 
               {/* Navigation items */}
@@ -192,9 +209,11 @@ export function PublicLayout({ children }: PublicLayoutProps) {
             {/* Logo Column */}
             <div className="absolute left-[437px] top-[101px]">
               <Link href="/inicio">
-                <img
+                <Image
                   src="/logo-blanco.png"
                   alt="Logo"
+                  width={121}
+                  height={40}
                   className="w-[121px] h-[40px]"
                 />
               </Link>

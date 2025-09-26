@@ -1,5 +1,6 @@
 import { PublicLayout } from "@/components/layout/PublicLayout";
 import Link from "next/link";
+import Image from "next/image";
 import { TratamientoCard } from "@/components/TratamientoCard";
 import { BlogArticleCard } from "@/components/BlogArticleCard";
 import { ContactoSectionWrapper } from "@/components/ContactoSectionWrapper";
@@ -16,8 +17,45 @@ export default async function InicioPage() {
   return (
     <PublicLayout>
       {/* Hero Section */}
-      <div className="bg-[url('/hero-bg-mobile.png')] md:bg-[url('/hero-bg.png')] bg-[position:bottom_left] bg-cover md:bg-[size:110%_auto] h-[378px] md:h-[1162px] relative">
-        <div className="bg-gradient-to-b from-black/50 to-neutral-300/50 h-full flex flex-col px-4">
+      <div className="h-[378px] md:h-[1162px] relative overflow-hidden">
+        {/* Mobile Hero Background */}
+        <div className="md:hidden absolute inset-0">
+          <Image
+            src="/hero-bg-mobile.webp"
+            alt="Hero background"
+            fill
+            priority
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+            className="object-cover object-bottom-left"
+            style={{ objectPosition: "bottom left" }}
+          />
+        </div>
+        {/* Desktop Hero Background */}
+        <div className="hidden md:block absolute inset-0 overflow-hidden">
+          <div
+            className="absolute inset-0"
+            style={{ width: "110%", height: "110%", left: "0%", top: "-10%" }}
+          >
+            <Image
+              src="/hero-bg.webp"
+              alt="Hero background"
+              fill
+              priority
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+              className="object-cover"
+              style={{
+                objectPosition: "bottom left"
+              }}
+              sizes="110vw"
+            />
+          </div>
+        </div>
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-neutral-300/50 z-5"></div>
+        {/* Content Layer */}
+        <div className="h-full flex flex-col px-4 relative z-10">
           <div className="text-center md:text-center pt-[98px] md:pt-[114px] flex-1 flex flex-col justify-between">
             <div className="md:text-center">
               <h1
@@ -132,7 +170,7 @@ export default async function InicioPage() {
         </div>
 
         {/* Mobile Buttons - Positioned over hero image */}
-        <div className="md:hidden absolute bottom-[70px] left-[20px] flex flex-row items-center">
+        <div className="md:hidden absolute bottom-[70px] left-[20px] flex flex-row items-center z-20">
           {/* Button: Black background, "Reservá tu turno" without icon */}
           <a
             href="https://wa.me/542644390203"
@@ -154,12 +192,17 @@ export default async function InicioPage() {
         {/* First Row - Overlapping */}
         <div className="grid grid-cols-[530px_530px] gap-[21px] mb-[64px]">
           {/* Column 1: Background Image Card */}
-          <div
-            className="h-[560px] rounded-lg bg-cover bg-center"
-            style={{
-              backgroundImage: "url('/doctor-min.png')"
-            }}
-          ></div>
+          <div className="h-[560px] rounded-lg relative overflow-hidden">
+            <Image
+              src="/doctor-min.webp"
+              alt="Dr. German Miranda Marini"
+              fill
+              priority
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+              className="object-cover"
+            />
+          </div>
 
           {/* Column 2: Content Card */}
           <div
@@ -397,13 +440,18 @@ export default async function InicioPage() {
           </h2>
 
           {/* Image */}
-          <div className="mt-[86px]">
-            <img
-              src="/por-que-elegirnos.png"
-              alt="¿Por qué elegirnos?"
-              className="mx-auto"
+          <div className="mt-[86px] flex justify-center">
+            <div
+              className="relative"
               style={{ width: "1055px", height: "676px" }}
-            />
+            >
+              <Image
+                src="/por-que-elegirnos.webp"
+                alt="¿Por qué elegirnos?"
+                fill
+                className="object-contain"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -498,15 +546,15 @@ export default async function InicioPage() {
 
         {/* Personal Photo Container */}
         <div className="flex justify-center px-4 mt-[21px]">
-          <div
-            className="h-[256px] w-full max-w-sm rounded-[7px] overflow-hidden"
-            style={{
-              backgroundImage: "url('/doctor-min.png')",
-              backgroundSize: "135%",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat"
-            }}
-          ></div>
+          <div className="h-[256px] w-full max-w-sm rounded-[7px] overflow-hidden relative">
+            <Image
+              src="/doctor-min.webp"
+              alt="Dr. German Miranda Marini"
+              fill
+              className="object-cover"
+              style={{ objectPosition: "center", transform: "scale(1.35)" }}
+            />
+          </div>
         </div>
         {/* Doctor Information */}
         <DoctorInfoSection />
@@ -575,12 +623,14 @@ export default async function InicioPage() {
             ¿Por qué elegirnos?
           </h3>
           <div className="flex justify-center px-5 w-full max-w-sm">
-            <div
-              className="w-full h-[444px] bg-center bg-contain bg-no-repeat"
-              style={{
-                backgroundImage: "url('/por-que-elegirnos-mobile.png')"
-              }}
-            ></div>
+            <div className="w-full h-[444px] relative">
+              <Image
+                src="/por-que-elegirnos-mobile.webp"
+                alt="¿Por qué elegirnos?"
+                fill
+                className="object-contain"
+              />
+            </div>
           </div>
         </div>
       </div>
