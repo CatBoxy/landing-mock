@@ -47,7 +47,6 @@ next-env.d.ts
 /src/components/doctors/
 /src/components/dashboard/
 /src/components/examples/
-/src/app/admin/
+# /src/app/admin/
 /src/types/api.ts
 API_USAGE.md
-/src/app/admin/
