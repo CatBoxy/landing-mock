@@ -12,7 +12,7 @@ export function DoctorInfoSection() {
   return (
     <div className="flex justify-center px-4" style={{ marginTop: "21px" }}>
       <div className="rounded-lg bg-[#E9E3DC] px-[20px] pt-[24px] pb-5 text-xs w-full max-w-sm">
-        <p className="font-light leading-none text-[18px] text-left">
+        <p className="font-light leading-none text-[18px] text-left !leading-[24px]">
           Soy médico cirujano, especializado <br />
           en cirugía plástica estética y <br />
           reconstructiva. Me formé en la <br />

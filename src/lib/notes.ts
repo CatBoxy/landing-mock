@@ -8,7 +8,10 @@ import type {
 } from "@/types/notes";
 
 export class NotesError extends Error {
-  constructor(message: string, public status?: number) {
+  constructor(
+    message: string,
+    public status?: number
+  ) {
     super(message);
     this.name = "NotesError";
   }
@@ -304,7 +307,7 @@ export class NotesService {
 
     // If it's a relative API path, construct full URL
     if (imageUrlOrFilename.startsWith("/api/notes/image/")) {
-      return `http://72.60.58.137${imageUrlOrFilename}`;
+      return `${process.env.NEXT_PUBLIC_API_BASE_URL?.replace("/api", "")}${imageUrlOrFilename}`;
     }
 
     // If it's just a filename, construct the full URL

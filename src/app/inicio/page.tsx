@@ -536,7 +536,7 @@ export default async function InicioPage() {
       {/* Mobile Only Text Section */}
       <div className="md:hidden bg-main-bg flex items-center justify-left px-[20px] pt-[20px] pb-[52px]">
         <div className="text-left max-w-sm">
-          <p className="text-black font-main text-[18px] font-normal leading-[22px]">
+          <p className="text-black font-main text-[18px] font-normal leading-[24px]">
             Somos más que una clínica: <br />
             somos una cultura de cuidado. <br />
             Creemos en una estética ética, <br />

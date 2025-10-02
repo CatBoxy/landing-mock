@@ -107,7 +107,7 @@ export function NotesTable({ className = "" }: NotesTableProps) {
     });
   };
 
-  const truncateText = (text: string, maxLength: number = 100) => {
+  const truncateText = (text: string, maxLength: number = 30) => {
     if (text.length <= maxLength) return text;
     return text.substring(0, maxLength) + "...";
   };
