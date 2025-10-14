@@ -10,6 +10,7 @@ export interface Note {
   updatedAt: string;
   userId: number;
   username?: string; // For display purposes
+  userFullName?: string; // For display purposes
 }
 
 export interface CreateNoteRequest {

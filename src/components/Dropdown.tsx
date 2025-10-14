@@ -45,17 +45,17 @@ export function Dropdown({
     const [firstDescription, ...remaining] = description;
 
     return (
-      <div className="space-y-3 pt-[10px]">
-        <p className="font-main font-light text-sm text-black leading-relaxed">
+      <div className="space-y-3 pt-[10px] md:px-5">
+        <p className="font-main font-light text-sm md:text-[20px] text-black leading-[30px]">
           {firstDescription}
         </p>
 
         {remaining.length > 1 ? (
-          <ul className="space-y-1">
+          <ul className="space-y-1 md:space-y-4">
             {remaining.map((item, index) => (
               <li
                 key={index}
-                className="font-main font-light text-sm text-black leading-relaxed flex items-start"
+                className="font-main font-light md:font-bold text-sm md:text-[20px] text-black leading-relaxed md:leading-[30px] flex items-start"
               >
                 <span className="mr-2">•</span>
                 <span>{item}</span>
@@ -63,7 +63,7 @@ export function Dropdown({
             ))}
           </ul>
         ) : remaining.length === 1 ? (
-          <p className="font-main font-light text-sm text-[#78815C] italic leading-relaxed">
+          <p className="font-main font-light text-sm md:text-[20px] text-[#78815C] italic leading-relaxed">
             {remaining[0]}
           </p>
         ) : null}

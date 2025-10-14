@@ -117,7 +117,7 @@ function noteToArticleData(note: Note): BlogArticleData {
     title: note.title,
     subtitle: "Actualidad médica", // Default subtitle since notes don't have subtitles
     text: note.description,
-    author: note.username || "Dr. German Miranda Marini"
+    author: note.userFullName || "Dr. German Miranda Marini"
   };
 }
 
@@ -155,7 +155,6 @@ export async function getNotesForHomepage(): Promise<BlogArticleData[]> {
 
     // Convert notes to article format
     const articles = data.content.map(noteToArticleData);
-
     // If we have fewer than 6 notes, pad with fallback data
     if (articles.length < 6) {
       const remainingCount = 6 - articles.length;
