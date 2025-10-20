@@ -11,7 +11,9 @@ interface ContactFormData {
 
 export async function POST(request: Request) {
   try {
+    console.log("📧 Email API route called");
     const body: ContactFormData = await request.json();
+    console.log("📧 Request body:", body);
 
     // Validate required fields
     if (!body.nombre || !body.email || !body.localidad || !body.mensaje) {
@@ -22,8 +24,8 @@ export async function POST(request: Request) {
     }
 
     const { data, error } = await resend.emails.send({
-      from: "onboarding@resend.dev",
-      to: ["santecirugia@gmail.com"],
+      from: "contacto@centrosante.com.ar",
+      to: ["centrosante00@gmail.com"],
       subject: "Mensaje desde Contacto Web",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
@@ -96,10 +98,12 @@ export async function POST(request: Request) {
 
     if (error) {
       console.error("Resend error:", error);
+      console.error("Full error details:", JSON.stringify(error, null, 2));
       return Response.json(
         {
           error:
-            "Error al enviar el email. Por favor, inténtalo de nuevo o comunícate por WhatsApp."
+            "Error al enviar el email. Por favor, inténtalo de nuevo o comunícate por WhatsApp.",
+          details: error
         },
         { status: 500 }
       );

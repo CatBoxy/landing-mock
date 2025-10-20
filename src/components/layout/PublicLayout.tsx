@@ -25,7 +25,7 @@ export function PublicLayout({ children }: PublicLayoutProps) {
           {/* Desktop Header Content */}
           <div className="hidden md:block relative h-[162px] flex items-center">
             {/* Logo */}
-            <div className="absolute left-[245px] flex items-center h-full">
+            <div className="absolute md:left-8 lg:left-16 xl:left-32 2xl:left-[245px] flex items-center h-full">
               <Link href="/inicio" className="flex items-center">
                 <Image
                   src="/logo.png"
@@ -39,12 +39,12 @@ export function PublicLayout({ children }: PublicLayoutProps) {
             </div>
 
             {/* Desktop navigation */}
-            <div className="absolute right-[245px] flex items-center h-full space-x-16">
+            <div className="absolute md:right-8 lg:right-16 xl:right-32 2xl:right-[245px] flex items-center h-full md:space-x-3 lg:space-x-6 xl:space-x-10 2xl:space-x-16">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="font-sans transition-colors hover:text-gray-700"
+                  className="font-sans transition-colors hover:text-gray-700 whitespace-nowrap"
                   style={{
                     fontSize: "15px",
                     fontWeight: item.name === "CONTACTO" ? "900" : "400",
