@@ -19,7 +19,12 @@ export async function submitContactForm(
 ): Promise<{ success: boolean; message: string }> {
   try {
     // Validate required fields
-    if (!formData.nombre || !formData.email || !formData.localidad || !formData.mensaje) {
+    if (
+      !formData.nombre ||
+      !formData.email ||
+      !formData.localidad ||
+      !formData.mensaje
+    ) {
       return {
         success: false,
         message: "Todos los campos son obligatorios"
@@ -30,7 +35,7 @@ export async function submitContactForm(
 
     const { data, error } = await resend.emails.send({
       from: "contacto@centrosante.com.ar",
-      to: ["centrosante00@gmail.com"],
+      to: ["santecirugia@gmail.com"],
       subject: "Mensaje desde Contacto Web",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
@@ -106,7 +111,8 @@ export async function submitContactForm(
       console.error("Full error details:", JSON.stringify(error, null, 2));
       return {
         success: false,
-        message: "Error al enviar el email. Por favor, inténtalo de nuevo o comunícate por WhatsApp."
+        message:
+          "Error al enviar el email. Por favor, inténtalo de nuevo o comunícate por WhatsApp."
       };
     }
 
@@ -114,13 +120,15 @@ export async function submitContactForm(
 
     return {
       success: true,
-      message: "¡Gracias por tu mensaje! Hemos recibido tu consulta y te responderemos pronto."
+      message:
+        "¡Gracias por tu mensaje! Hemos recibido tu consulta y te responderemos pronto."
     };
   } catch (error) {
     console.error("Error submitting contact form:", error);
     return {
       success: false,
-      message: "Error de conexión. Por favor, inténtalo de nuevo o comunícate por WhatsApp."
+      message:
+        "Error de conexión. Por favor, inténtalo de nuevo o comunícate por WhatsApp."
     };
   }
 }
